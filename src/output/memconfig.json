@@ -1,0 +1,3406 @@
+
+    {
+      "schema": {
+      "types": [
+                {
+          "name": "Root",
+          "description": "Driver for the API",
+          "fields": [
+            {
+              "name": "team",
+              "type": "TeamCollection",
+              "description": "Collection of Teams"
+            },
+            {
+              "name": "attachment",
+              "type": "AttachmentCollection",
+              "description": "Collection of Attachments"
+            },
+            {
+              "name": "issue",
+              "type": "IssueCollection",
+              "description": "Collection of Issues"
+            },
+            {
+              "name": "comment",
+              "type": "CommentCollection",
+              "description": "Collection of Comments"
+            },
+            {
+              "name": "customview",
+              "type": "CustomViewCollection",
+              "description": "Collection of CustomViews"
+            },
+            {
+              "name": "customer",
+              "type": "CustomerCollection",
+              "description": "Collection of Customers"
+            },
+            {
+              "name": "customerneed",
+              "type": "CustomerNeedCollection",
+              "description": "Collection of CustomerNeeds"
+            },
+            {
+              "name": "customerstatus",
+              "type": "CustomerStatusCollection",
+              "description": "Collection of CustomerStatuss"
+            },
+            {
+              "name": "customertier",
+              "type": "CustomerTierCollection",
+              "description": "Collection of CustomerTiers"
+            },
+            {
+              "name": "cycle",
+              "type": "CycleCollection",
+              "description": "Collection of Cycles"
+            },
+            {
+              "name": "document",
+              "type": "DocumentCollection",
+              "description": "Collection of Documents"
+            },
+            {
+              "name": "emoji",
+              "type": "EmojiCollection",
+              "description": "Collection of Emojis"
+            },
+            {
+              "name": "entityexternallink",
+              "type": "EntityExternalLinkCollection",
+              "description": "Collection of EntityExternalLinks"
+            },
+            {
+              "name": "externaluser",
+              "type": "ExternalUserCollection",
+              "description": "Collection of ExternalUsers"
+            },
+            {
+              "name": "favorite",
+              "type": "FavoriteCollection",
+              "description": "Collection of Favorites"
+            },
+            {
+              "name": "initiative",
+              "type": "InitiativeCollection",
+              "description": "Collection of Initiatives"
+            },
+            {
+              "name": "initiativetoproject",
+              "type": "InitiativeToProjectCollection",
+              "description": "Collection of InitiativeToProjects"
+            },
+            {
+              "name": "integration",
+              "type": "IntegrationCollection",
+              "description": "Collection of Integrations"
+            },
+            {
+              "name": "integrationtemplate",
+              "type": "IntegrationTemplateCollection",
+              "description": "Collection of IntegrationTemplates"
+            },
+            {
+              "name": "integrationssettings",
+              "type": "IntegrationsSettingsCollection",
+              "description": "Collection of IntegrationsSettingss"
+            },
+            {
+              "name": "issue",
+              "type": "IssueCollection",
+              "description": "Collection of Issues"
+            },
+            {
+              "name": "issuelabel",
+              "type": "IssueLabelCollection",
+              "description": "Collection of IssueLabels"
+            },
+            {
+              "name": "issuerelation",
+              "type": "IssueRelationCollection",
+              "description": "Collection of IssueRelations"
+            },
+            {
+              "name": "issue",
+              "type": "IssueCollection",
+              "description": "Collection of Issues"
+            },
+            {
+              "name": "organization",
+              "type": "OrganizationCollection",
+              "description": "Collection of Organizations"
+            },
+            {
+              "name": "organizationinvite",
+              "type": "OrganizationInviteCollection",
+              "description": "Collection of OrganizationInvites"
+            },
+            {
+              "name": "project",
+              "type": "ProjectCollection",
+              "description": "Collection of Projects"
+            },
+            {
+              "name": "projectlink",
+              "type": "ProjectLinkCollection",
+              "description": "Collection of ProjectLinks"
+            },
+            {
+              "name": "projectmilestone",
+              "type": "ProjectMilestoneCollection",
+              "description": "Collection of ProjectMilestones"
+            },
+            {
+              "name": "projectrelation",
+              "type": "ProjectRelationCollection",
+              "description": "Collection of ProjectRelations"
+            },
+            {
+              "name": "projectstatus",
+              "type": "ProjectStatusCollection",
+              "description": "Collection of ProjectStatuss"
+            },
+            {
+              "name": "projectupdate",
+              "type": "ProjectUpdateCollection",
+              "description": "Collection of ProjectUpdates"
+            },
+            {
+              "name": "projectupdateinteraction",
+              "type": "ProjectUpdateInteractionCollection",
+              "description": "Collection of ProjectUpdateInteractions"
+            },
+            {
+              "name": "roadmap",
+              "type": "RoadmapCollection",
+              "description": "Collection of Roadmaps"
+            },
+            {
+              "name": "roadmaptoproject",
+              "type": "RoadmapToProjectCollection",
+              "description": "Collection of RoadmapToProjects"
+            },
+            {
+              "name": "team",
+              "type": "TeamCollection",
+              "description": "Collection of Teams"
+            },
+            {
+              "name": "teammembership",
+              "type": "TeamMembershipCollection",
+              "description": "Collection of TeamMemberships"
+            },
+            {
+              "name": "template",
+              "type": "TemplateCollection",
+              "description": "Collection of Templates"
+            },
+            {
+              "name": "template",
+              "type": "TemplateCollection",
+              "description": "Collection of Templates"
+            },
+            {
+              "name": "template",
+              "type": "TemplateCollection",
+              "description": "Collection of Templates"
+            },
+            {
+              "name": "timeschedule",
+              "type": "TimeScheduleCollection",
+              "description": "Collection of TimeSchedules"
+            },
+            {
+              "name": "triageresponsibility",
+              "type": "TriageResponsibilityCollection",
+              "description": "Collection of TriageResponsibilitys"
+            },
+            {
+              "name": "user",
+              "type": "UserCollection",
+              "description": "Collection of Users"
+            },
+            {
+              "name": "usersettings",
+              "type": "UserSettingsCollection",
+              "description": "Collection of UserSettingss"
+            },
+            {
+              "name": "user",
+              "type": "UserCollection",
+              "description": "Collection of Users"
+            },
+            {
+              "name": "webhook",
+              "type": "WebhookCollection",
+              "description": "Collection of Webhooks"
+            },
+            {
+              "name": "workflowstate",
+              "type": "WorkflowStateCollection",
+              "description": "Collection of WorkflowStates"
+            }
+          ]
+        },
+                
+          {
+            "name": "TeamCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "Team",
+                "params": [
+                  
+                ],
+                "description": "Field representing a single Team"
+              }
+            ],
+            "events": [],
+            "description": "Collection of Team"
+          },
+        
+          {
+            "name": "AttachmentCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "Attachment",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single Attachment"
+              }
+            ],
+            "events": [],
+            "description": "Collection of Attachment"
+          },
+        
+          {
+            "name": "IssueCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "Issue",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single Issue"
+              }
+            ],
+            "events": [],
+            "description": "Collection of Issue"
+          },
+        
+          {
+            "name": "CommentCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "Comment",
+                "params": [
+                  {
+                    "name": "hash",
+                    "type": "String,id"
+                  }
+                ],
+                "description": "Field representing a single Comment"
+              }
+            ],
+            "events": [],
+            "description": "Collection of Comment"
+          },
+        
+          {
+            "name": "CustomViewCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "CustomView",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single CustomView"
+              }
+            ],
+            "events": [],
+            "description": "Collection of CustomView"
+          },
+        
+          {
+            "name": "CustomerCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "Customer",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single Customer"
+              }
+            ],
+            "events": [],
+            "description": "Collection of Customer"
+          },
+        
+          {
+            "name": "CustomerNeedCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "CustomerNeed",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single CustomerNeed"
+              }
+            ],
+            "events": [],
+            "description": "Collection of CustomerNeed"
+          },
+        
+          {
+            "name": "CustomerStatusCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "CustomerStatus",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single CustomerStatus"
+              }
+            ],
+            "events": [],
+            "description": "Collection of CustomerStatus"
+          },
+        
+          {
+            "name": "CustomerTierCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "CustomerTier",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single CustomerTier"
+              }
+            ],
+            "events": [],
+            "description": "Collection of CustomerTier"
+          },
+        
+          {
+            "name": "CycleCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "Cycle",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single Cycle"
+              }
+            ],
+            "events": [],
+            "description": "Collection of Cycle"
+          },
+        
+          {
+            "name": "DocumentCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "Document",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single Document"
+              }
+            ],
+            "events": [],
+            "description": "Collection of Document"
+          },
+        
+          {
+            "name": "EmojiCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "Emoji",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single Emoji"
+              }
+            ],
+            "events": [],
+            "description": "Collection of Emoji"
+          },
+        
+          {
+            "name": "EntityExternalLinkCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "EntityExternalLink",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single EntityExternalLink"
+              }
+            ],
+            "events": [],
+            "description": "Collection of EntityExternalLink"
+          },
+        
+          {
+            "name": "ExternalUserCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "ExternalUser",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single ExternalUser"
+              }
+            ],
+            "events": [],
+            "description": "Collection of ExternalUser"
+          },
+        
+          {
+            "name": "FavoriteCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "Favorite",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single Favorite"
+              }
+            ],
+            "events": [],
+            "description": "Collection of Favorite"
+          },
+        
+          {
+            "name": "InitiativeCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "Initiative",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single Initiative"
+              }
+            ],
+            "events": [],
+            "description": "Collection of Initiative"
+          },
+        
+          {
+            "name": "InitiativeToProjectCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "InitiativeToProject",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single InitiativeToProject"
+              }
+            ],
+            "events": [],
+            "description": "Collection of InitiativeToProject"
+          },
+        
+          {
+            "name": "IntegrationCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "Integration",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single Integration"
+              }
+            ],
+            "events": [],
+            "description": "Collection of Integration"
+          },
+        
+          {
+            "name": "IntegrationTemplateCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "IntegrationTemplate",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single IntegrationTemplate"
+              }
+            ],
+            "events": [],
+            "description": "Collection of IntegrationTemplate"
+          },
+        
+          {
+            "name": "IntegrationsSettingsCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "IntegrationsSettings",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single IntegrationsSettings"
+              }
+            ],
+            "events": [],
+            "description": "Collection of IntegrationsSettings"
+          },
+        
+          {
+            "name": "IssueCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "Issue",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single Issue"
+              }
+            ],
+            "events": [],
+            "description": "Collection of Issue"
+          },
+        
+          {
+            "name": "IssueLabelCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "IssueLabel",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single IssueLabel"
+              }
+            ],
+            "events": [],
+            "description": "Collection of IssueLabel"
+          },
+        
+          {
+            "name": "IssueRelationCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "IssueRelation",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single IssueRelation"
+              }
+            ],
+            "events": [],
+            "description": "Collection of IssueRelation"
+          },
+        
+          {
+            "name": "IssueCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "Issue",
+                "params": [
+                  {
+                    "name": "branchName",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single Issue"
+              }
+            ],
+            "events": [],
+            "description": "Collection of Issue"
+          },
+        
+          {
+            "name": "OrganizationCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "Organization",
+                "params": [
+                  
+                ],
+                "description": "Field representing a single Organization"
+              }
+            ],
+            "events": [],
+            "description": "Collection of Organization"
+          },
+        
+          {
+            "name": "OrganizationInviteCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "OrganizationInvite",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single OrganizationInvite"
+              }
+            ],
+            "events": [],
+            "description": "Collection of OrganizationInvite"
+          },
+        
+          {
+            "name": "ProjectCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "Project",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single Project"
+              }
+            ],
+            "events": [],
+            "description": "Collection of Project"
+          },
+        
+          {
+            "name": "ProjectLinkCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "ProjectLink",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single ProjectLink"
+              }
+            ],
+            "events": [],
+            "description": "Collection of ProjectLink"
+          },
+        
+          {
+            "name": "ProjectMilestoneCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "ProjectMilestone",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single ProjectMilestone"
+              }
+            ],
+            "events": [],
+            "description": "Collection of ProjectMilestone"
+          },
+        
+          {
+            "name": "ProjectRelationCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "ProjectRelation",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single ProjectRelation"
+              }
+            ],
+            "events": [],
+            "description": "Collection of ProjectRelation"
+          },
+        
+          {
+            "name": "ProjectStatusCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "ProjectStatus",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single ProjectStatus"
+              }
+            ],
+            "events": [],
+            "description": "Collection of ProjectStatus"
+          },
+        
+          {
+            "name": "ProjectUpdateCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "ProjectUpdate",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single ProjectUpdate"
+              }
+            ],
+            "events": [],
+            "description": "Collection of ProjectUpdate"
+          },
+        
+          {
+            "name": "ProjectUpdateInteractionCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "ProjectUpdateInteraction",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single ProjectUpdateInteraction"
+              }
+            ],
+            "events": [],
+            "description": "Collection of ProjectUpdateInteraction"
+          },
+        
+          {
+            "name": "RoadmapCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "Roadmap",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single Roadmap"
+              }
+            ],
+            "events": [],
+            "description": "Collection of Roadmap"
+          },
+        
+          {
+            "name": "RoadmapToProjectCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "RoadmapToProject",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single RoadmapToProject"
+              }
+            ],
+            "events": [],
+            "description": "Collection of RoadmapToProject"
+          },
+        
+          {
+            "name": "TeamCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "Team",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single Team"
+              }
+            ],
+            "events": [],
+            "description": "Collection of Team"
+          },
+        
+          {
+            "name": "TeamMembershipCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "TeamMembership",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single TeamMembership"
+              }
+            ],
+            "events": [],
+            "description": "Collection of TeamMembership"
+          },
+        
+          {
+            "name": "TemplateCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "Template",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single Template"
+              }
+            ],
+            "events": [],
+            "description": "Collection of Template"
+          },
+        
+          {
+            "name": "TemplateCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "Template",
+                "params": [
+                  
+                ],
+                "description": "Field representing a single Template"
+              }
+            ],
+            "events": [],
+            "description": "Collection of Template"
+          },
+        
+          {
+            "name": "TemplateCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "Template",
+                "params": [
+                  {
+                    "name": "integrationType",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single Template"
+              }
+            ],
+            "events": [],
+            "description": "Collection of Template"
+          },
+        
+          {
+            "name": "TimeScheduleCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "TimeSchedule",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single TimeSchedule"
+              }
+            ],
+            "events": [],
+            "description": "Collection of TimeSchedule"
+          },
+        
+          {
+            "name": "TriageResponsibilityCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "TriageResponsibility",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single TriageResponsibility"
+              }
+            ],
+            "events": [],
+            "description": "Collection of TriageResponsibility"
+          },
+        
+          {
+            "name": "UserCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "User",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single User"
+              }
+            ],
+            "events": [],
+            "description": "Collection of User"
+          },
+        
+          {
+            "name": "UserSettingsCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "UserSettings",
+                "params": [
+                  
+                ],
+                "description": "Field representing a single UserSettings"
+              }
+            ],
+            "events": [],
+            "description": "Collection of UserSettings"
+          },
+        
+          {
+            "name": "UserCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "User",
+                "params": [
+                  
+                ],
+                "description": "Field representing a single User"
+              }
+            ],
+            "events": [],
+            "description": "Collection of User"
+          },
+        
+          {
+            "name": "WebhookCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "Webhook",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single Webhook"
+              }
+            ],
+            "events": [],
+            "description": "Collection of Webhook"
+          },
+        
+          {
+            "name": "WorkflowStateCollection",
+            "fields": [
+              {
+                "name": "one",
+                "type": "WorkflowState",
+                "params": [
+                  {
+                    "name": "id",
+                    "type": "String"
+                  }
+                ],
+                "description": "Field representing a single WorkflowState"
+              }
+            ],
+            "events": [],
+            "description": "Collection of WorkflowState"
+          },
+                {
+          "name": "Team",
+          "fields": [
+            {
+              "name": "autoArchivePeriod",
+              "type": "Float",
+              "description": "The Team's autoArchivePeriod"
+            },
+            {
+              "name": "autoCloseChildIssues",
+              "type": "Boolean",
+              "description": "The Team's autoCloseChildIssues"
+            },
+            {
+              "name": "autoCloseParentIssues",
+              "type": "Boolean",
+              "description": "The Team's autoCloseParentIssues"
+            },
+            {
+              "name": "autoClosePeriod",
+              "type": "Float",
+              "description": "The Team's autoClosePeriod"
+            },
+            {
+              "name": "autoCloseStateId",
+              "type": "String",
+              "description": "The Team's autoCloseStateId"
+            },
+            {
+              "name": "color",
+              "type": "String",
+              "description": "The Team's color"
+            },
+            {
+              "name": "cycleCalenderUrl",
+              "type": "String",
+              "description": "The Team's cycleCalenderUrl"
+            },
+            {
+              "name": "cycleCooldownTime",
+              "type": "Float",
+              "description": "The Team's cycleCooldownTime"
+            },
+            {
+              "name": "cycleDuration",
+              "type": "Float",
+              "description": "The Team's cycleDuration"
+            },
+            {
+              "name": "cycleIssueAutoAssignCompleted",
+              "type": "Boolean",
+              "description": "The Team's cycleIssueAutoAssignCompleted"
+            },
+            {
+              "name": "cycleIssueAutoAssignStarted",
+              "type": "Boolean",
+              "description": "The Team's cycleIssueAutoAssignStarted"
+            },
+            {
+              "name": "cycleLockToActive",
+              "type": "Boolean",
+              "description": "The Team's cycleLockToActive"
+            },
+            {
+              "name": "cycleStartDay",
+              "type": "Float",
+              "description": "The Team's cycleStartDay"
+            },
+            {
+              "name": "cyclesEnabled",
+              "type": "Boolean",
+              "description": "The Team's cyclesEnabled"
+            },
+            {
+              "name": "defaultIssueEstimate",
+              "type": "Float",
+              "description": "The Team's defaultIssueEstimate"
+            },
+            {
+              "name": "defaultTemplateForMembersId",
+              "type": "String",
+              "description": "The Team's defaultTemplateForMembersId"
+            },
+            {
+              "name": "defaultTemplateForNonMembersId",
+              "type": "String",
+              "description": "The Team's defaultTemplateForNonMembersId"
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "description": "The Team's description"
+            },
+            {
+              "name": "groupIssueHistory",
+              "type": "Boolean",
+              "description": "The Team's groupIssueHistory"
+            },
+            {
+              "name": "icon",
+              "type": "String",
+              "description": "The Team's icon"
+            },
+            {
+              "name": "inviteHash",
+              "type": "String",
+              "description": "The Team's inviteHash"
+            },
+            {
+              "name": "issueCount",
+              "type": "Int",
+              "description": "The Team's issueCount"
+            },
+            {
+              "name": "issueEstimationAllowZero",
+              "type": "Boolean",
+              "description": "The Team's issueEstimationAllowZero"
+            },
+            {
+              "name": "issueEstimationExtended",
+              "type": "Boolean",
+              "description": "The Team's issueEstimationExtended"
+            },
+            {
+              "name": "issueEstimationType",
+              "type": "String",
+              "description": "The Team's issueEstimationType"
+            },
+            {
+              "name": "issueOrderingNoPriorityFirst",
+              "type": "Boolean",
+              "description": "The Team's issueOrderingNoPriorityFirst"
+            },
+            {
+              "name": "issueSortOrderDefaultToBottom",
+              "type": "Boolean",
+              "description": "The Team's issueSortOrderDefaultToBottom"
+            },
+            {
+              "name": "joinByDefault",
+              "type": "Boolean",
+              "description": "The Team's joinByDefault"
+            },
+            {
+              "name": "key",
+              "type": "String",
+              "description": "The Team's key"
+            },
+            {
+              "name": "name",
+              "type": "String",
+              "description": "The Team's name"
+            },
+            {
+              "name": "private",
+              "type": "Boolean",
+              "description": "The Team's private"
+            },
+            {
+              "name": "requirePriorityToLeaveTriage",
+              "type": "Boolean",
+              "description": "The Team's requirePriorityToLeaveTriage"
+            },
+            {
+              "name": "scimGroupName",
+              "type": "String",
+              "description": "The Team's scimGroupName"
+            },
+            {
+              "name": "scimManaged",
+              "type": "Boolean",
+              "description": "The Team's scimManaged"
+            },
+            {
+              "name": "setIssueSortOrderOnStateChange",
+              "type": "String",
+              "description": "The Team's setIssueSortOrderOnStateChange"
+            },
+            {
+              "name": "slackIssueComments",
+              "type": "Boolean",
+              "description": "The Team's slackIssueComments"
+            },
+            {
+              "name": "slackIssueStatuses",
+              "type": "Boolean",
+              "description": "The Team's slackIssueStatuses"
+            },
+            {
+              "name": "slackNewIssue",
+              "type": "Boolean",
+              "description": "The Team's slackNewIssue"
+            },
+            {
+              "name": "timezone",
+              "type": "String",
+              "description": "The Team's timezone"
+            },
+            {
+              "name": "triageEnabled",
+              "type": "Boolean",
+              "description": "The Team's triageEnabled"
+            },
+            {
+              "name": "upcomingCycleCount",
+              "type": "Float",
+              "description": "The Team's upcomingCycleCount"
+            }
+          ],
+          "events": [],
+          "description": "A Team",
+          "actions": []
+        },
+        {
+          "name": "Attachment",
+          "fields": [
+            {
+              "name": "groupBySource",
+              "type": "Boolean",
+              "description": "The Attachment's groupBySource"
+            },
+            {
+              "name": "sourceType",
+              "type": "String",
+              "description": "The Attachment's sourceType"
+            },
+            {
+              "name": "subtitle",
+              "type": "String",
+              "description": "The Attachment's subtitle"
+            },
+            {
+              "name": "title",
+              "type": "String",
+              "description": "The Attachment's title"
+            },
+            {
+              "name": "url",
+              "type": "String",
+              "description": "The Attachment's url"
+            }
+          ],
+          "events": [],
+          "description": "A Attachment",
+          "actions": []
+        },
+        {
+          "name": "Issue",
+          "fields": [
+            {
+              "name": "boardOrder",
+              "type": "Float",
+              "description": "The Issue's boardOrder"
+            },
+            {
+              "name": "branchName",
+              "type": "String",
+              "description": "The Issue's branchName"
+            },
+            {
+              "name": "customerTicketCount",
+              "type": "Int",
+              "description": "The Issue's customerTicketCount"
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "description": "The Issue's description"
+            },
+            {
+              "name": "descriptionState",
+              "type": "String",
+              "description": "The Issue's descriptionState"
+            },
+            {
+              "name": "estimate",
+              "type": "Float",
+              "description": "The Issue's estimate"
+            },
+            {
+              "name": "identifier",
+              "type": "String",
+              "description": "The Issue's identifier"
+            },
+            {
+              "name": "labelIds",
+              "type": "String",
+              "description": "The Issue's labelIds"
+            },
+            {
+              "name": "number",
+              "type": "Float",
+              "description": "The Issue's number"
+            },
+            {
+              "name": "previousIdentifiers",
+              "type": "String",
+              "description": "The Issue's previousIdentifiers"
+            },
+            {
+              "name": "priority",
+              "type": "Float",
+              "description": "The Issue's priority"
+            },
+            {
+              "name": "priorityLabel",
+              "type": "String",
+              "description": "The Issue's priorityLabel"
+            },
+            {
+              "name": "prioritySortOrder",
+              "type": "Float",
+              "description": "The Issue's prioritySortOrder"
+            },
+            {
+              "name": "sortOrder",
+              "type": "Float",
+              "description": "The Issue's sortOrder"
+            },
+            {
+              "name": "subIssueSortOrder",
+              "type": "Float",
+              "description": "The Issue's subIssueSortOrder"
+            },
+            {
+              "name": "title",
+              "type": "String",
+              "description": "The Issue's title"
+            },
+            {
+              "name": "trashed",
+              "type": "Boolean",
+              "description": "The Issue's trashed"
+            },
+            {
+              "name": "url",
+              "type": "String",
+              "description": "The Issue's url"
+            }
+          ],
+          "events": [],
+          "description": "A Issue",
+          "actions": []
+        },
+        {
+          "name": "Comment",
+          "fields": [
+            {
+              "name": "body",
+              "type": "String",
+              "description": "The Comment's body"
+            },
+            {
+              "name": "bodyData",
+              "type": "String",
+              "description": "The Comment's bodyData"
+            },
+            {
+              "name": "quotedText",
+              "type": "String",
+              "description": "The Comment's quotedText"
+            },
+            {
+              "name": "summaryText",
+              "type": "String",
+              "description": "The Comment's summaryText"
+            },
+            {
+              "name": "url",
+              "type": "String",
+              "description": "The Comment's url"
+            }
+          ],
+          "events": [],
+          "description": "A Comment",
+          "actions": []
+        },
+        {
+          "name": "CustomView",
+          "fields": [
+            {
+              "name": "color",
+              "type": "String",
+              "description": "The CustomView's color"
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "description": "The CustomView's description"
+            },
+            {
+              "name": "icon",
+              "type": "String",
+              "description": "The CustomView's icon"
+            },
+            {
+              "name": "modelName",
+              "type": "String",
+              "description": "The CustomView's modelName"
+            },
+            {
+              "name": "name",
+              "type": "String",
+              "description": "The CustomView's name"
+            },
+            {
+              "name": "shared",
+              "type": "Boolean",
+              "description": "The CustomView's shared"
+            },
+            {
+              "name": "slugId",
+              "type": "String",
+              "description": "The CustomView's slugId"
+            }
+          ],
+          "events": [],
+          "description": "A CustomView",
+          "actions": []
+        },
+        {
+          "name": "Customer",
+          "fields": [
+            {
+              "name": "domains",
+              "type": "String",
+              "description": "The Customer's domains"
+            },
+            {
+              "name": "externalIds",
+              "type": "String",
+              "description": "The Customer's externalIds"
+            },
+            {
+              "name": "logoUrl",
+              "type": "String",
+              "description": "The Customer's logoUrl"
+            },
+            {
+              "name": "name",
+              "type": "String",
+              "description": "The Customer's name"
+            },
+            {
+              "name": "revenue",
+              "type": "Float",
+              "description": "The Customer's revenue"
+            },
+            {
+              "name": "size",
+              "type": "Float",
+              "description": "The Customer's size"
+            },
+            {
+              "name": "slackChannelId",
+              "type": "String",
+              "description": "The Customer's slackChannelId"
+            }
+          ],
+          "events": [],
+          "description": "A Customer",
+          "actions": []
+        },
+        {
+          "name": "CustomerNeed",
+          "fields": [
+            {
+              "name": "body",
+              "type": "String",
+              "description": "The CustomerNeed's body"
+            },
+            {
+              "name": "bodyData",
+              "type": "String",
+              "description": "The CustomerNeed's bodyData"
+            },
+            {
+              "name": "priority",
+              "type": "Float",
+              "description": "The CustomerNeed's priority"
+            }
+          ],
+          "events": [],
+          "description": "A CustomerNeed",
+          "actions": []
+        },
+        {
+          "name": "CustomerStatus",
+          "fields": [
+            {
+              "name": "color",
+              "type": "String",
+              "description": "The CustomerStatus's color"
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "description": "The CustomerStatus's description"
+            },
+            {
+              "name": "name",
+              "type": "String",
+              "description": "The CustomerStatus's name"
+            },
+            {
+              "name": "position",
+              "type": "Float",
+              "description": "The CustomerStatus's position"
+            }
+          ],
+          "events": [],
+          "description": "A CustomerStatus",
+          "actions": []
+        },
+        {
+          "name": "CustomerTier",
+          "fields": [
+            {
+              "name": "color",
+              "type": "String",
+              "description": "The CustomerTier's color"
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "description": "The CustomerTier's description"
+            },
+            {
+              "name": "name",
+              "type": "String",
+              "description": "The CustomerTier's name"
+            },
+            {
+              "name": "position",
+              "type": "Float",
+              "description": "The CustomerTier's position"
+            }
+          ],
+          "events": [],
+          "description": "A CustomerTier",
+          "actions": []
+        },
+        {
+          "name": "Cycle",
+          "fields": [
+            {
+              "name": "completedIssueCountHistory",
+              "type": "Float",
+              "description": "The Cycle's completedIssueCountHistory"
+            },
+            {
+              "name": "completedScopeHistory",
+              "type": "Float",
+              "description": "The Cycle's completedScopeHistory"
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "description": "The Cycle's description"
+            },
+            {
+              "name": "inProgressScopeHistory",
+              "type": "Float",
+              "description": "The Cycle's inProgressScopeHistory"
+            },
+            {
+              "name": "issueCountHistory",
+              "type": "Float",
+              "description": "The Cycle's issueCountHistory"
+            },
+            {
+              "name": "name",
+              "type": "String",
+              "description": "The Cycle's name"
+            },
+            {
+              "name": "number",
+              "type": "Float",
+              "description": "The Cycle's number"
+            },
+            {
+              "name": "progress",
+              "type": "Float",
+              "description": "The Cycle's progress"
+            },
+            {
+              "name": "scopeHistory",
+              "type": "Float",
+              "description": "The Cycle's scopeHistory"
+            }
+          ],
+          "events": [],
+          "description": "A Cycle",
+          "actions": []
+        },
+        {
+          "name": "Document",
+          "fields": [
+            {
+              "name": "color",
+              "type": "String",
+              "description": "The Document's color"
+            },
+            {
+              "name": "content",
+              "type": "String",
+              "description": "The Document's content"
+            },
+            {
+              "name": "contentState",
+              "type": "String",
+              "description": "The Document's contentState"
+            },
+            {
+              "name": "documentContentId",
+              "type": "String",
+              "description": "The Document's documentContentId"
+            },
+            {
+              "name": "icon",
+              "type": "String",
+              "description": "The Document's icon"
+            },
+            {
+              "name": "slugId",
+              "type": "String",
+              "description": "The Document's slugId"
+            },
+            {
+              "name": "sortOrder",
+              "type": "Float",
+              "description": "The Document's sortOrder"
+            },
+            {
+              "name": "title",
+              "type": "String",
+              "description": "The Document's title"
+            },
+            {
+              "name": "trashed",
+              "type": "Boolean",
+              "description": "The Document's trashed"
+            },
+            {
+              "name": "url",
+              "type": "String",
+              "description": "The Document's url"
+            }
+          ],
+          "events": [],
+          "description": "A Document",
+          "actions": []
+        },
+        {
+          "name": "Emoji",
+          "fields": [
+            {
+              "name": "name",
+              "type": "String",
+              "description": "The Emoji's name"
+            },
+            {
+              "name": "source",
+              "type": "String",
+              "description": "The Emoji's source"
+            },
+            {
+              "name": "url",
+              "type": "String",
+              "description": "The Emoji's url"
+            }
+          ],
+          "events": [],
+          "description": "A Emoji",
+          "actions": []
+        },
+        {
+          "name": "EntityExternalLink",
+          "fields": [
+            {
+              "name": "label",
+              "type": "String",
+              "description": "The EntityExternalLink's label"
+            },
+            {
+              "name": "sortOrder",
+              "type": "Float",
+              "description": "The EntityExternalLink's sortOrder"
+            },
+            {
+              "name": "url",
+              "type": "String",
+              "description": "The EntityExternalLink's url"
+            }
+          ],
+          "events": [],
+          "description": "A EntityExternalLink",
+          "actions": []
+        },
+        {
+          "name": "ExternalUser",
+          "fields": [
+            {
+              "name": "avatarUrl",
+              "type": "String",
+              "description": "The ExternalUser's avatarUrl"
+            },
+            {
+              "name": "displayName",
+              "type": "String",
+              "description": "The ExternalUser's displayName"
+            },
+            {
+              "name": "email",
+              "type": "String",
+              "description": "The ExternalUser's email"
+            },
+            {
+              "name": "name",
+              "type": "String",
+              "description": "The ExternalUser's name"
+            }
+          ],
+          "events": [],
+          "description": "A ExternalUser",
+          "actions": []
+        },
+        {
+          "name": "Favorite",
+          "fields": [
+            {
+              "name": "color",
+              "type": "String",
+              "description": "The Favorite's color"
+            },
+            {
+              "name": "detail",
+              "type": "String",
+              "description": "The Favorite's detail"
+            },
+            {
+              "name": "folderName",
+              "type": "String",
+              "description": "The Favorite's folderName"
+            },
+            {
+              "name": "icon",
+              "type": "String",
+              "description": "The Favorite's icon"
+            },
+            {
+              "name": "predefinedViewType",
+              "type": "String",
+              "description": "The Favorite's predefinedViewType"
+            },
+            {
+              "name": "sortOrder",
+              "type": "Float",
+              "description": "The Favorite's sortOrder"
+            },
+            {
+              "name": "title",
+              "type": "String",
+              "description": "The Favorite's title"
+            },
+            {
+              "name": "type",
+              "type": "String",
+              "description": "The Favorite's type"
+            },
+            {
+              "name": "url",
+              "type": "String",
+              "description": "The Favorite's url"
+            }
+          ],
+          "events": [],
+          "description": "A Favorite",
+          "actions": []
+        },
+        {
+          "name": "Initiative",
+          "fields": [
+            {
+              "name": "color",
+              "type": "String",
+              "description": "The Initiative's color"
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "description": "The Initiative's description"
+            },
+            {
+              "name": "icon",
+              "type": "String",
+              "description": "The Initiative's icon"
+            },
+            {
+              "name": "name",
+              "type": "String",
+              "description": "The Initiative's name"
+            },
+            {
+              "name": "slugId",
+              "type": "String",
+              "description": "The Initiative's slugId"
+            },
+            {
+              "name": "sortOrder",
+              "type": "Float",
+              "description": "The Initiative's sortOrder"
+            },
+            {
+              "name": "trashed",
+              "type": "Boolean",
+              "description": "The Initiative's trashed"
+            }
+          ],
+          "events": [],
+          "description": "A Initiative",
+          "actions": []
+        },
+        {
+          "name": "InitiativeToProject",
+          "fields": [
+            {
+              "name": "sortOrder",
+              "type": "String",
+              "description": "The InitiativeToProject's sortOrder"
+            }
+          ],
+          "events": [],
+          "description": "A InitiativeToProject",
+          "actions": []
+        },
+        {
+          "name": "Integration",
+          "fields": [
+            {
+              "name": "service",
+              "type": "String",
+              "description": "The Integration's service"
+            }
+          ],
+          "events": [],
+          "description": "A Integration",
+          "actions": []
+        },
+        {
+          "name": "IntegrationTemplate",
+          "fields": [
+            {
+              "name": "foreignEntityId",
+              "type": "String",
+              "description": "The IntegrationTemplate's foreignEntityId"
+            }
+          ],
+          "events": [],
+          "description": "A IntegrationTemplate",
+          "actions": []
+        },
+        {
+          "name": "IntegrationsSettings",
+          "fields": [
+            {
+              "name": "slackIssueAddedToTriage",
+              "type": "Boolean",
+              "description": "The IntegrationsSettings's slackIssueAddedToTriage"
+            },
+            {
+              "name": "slackIssueAddedToView",
+              "type": "Boolean",
+              "description": "The IntegrationsSettings's slackIssueAddedToView"
+            },
+            {
+              "name": "slackIssueCreated",
+              "type": "Boolean",
+              "description": "The IntegrationsSettings's slackIssueCreated"
+            },
+            {
+              "name": "slackIssueNewComment",
+              "type": "Boolean",
+              "description": "The IntegrationsSettings's slackIssueNewComment"
+            },
+            {
+              "name": "slackIssueSlaBreached",
+              "type": "Boolean",
+              "description": "The IntegrationsSettings's slackIssueSlaBreached"
+            },
+            {
+              "name": "slackIssueSlaHighRisk",
+              "type": "Boolean",
+              "description": "The IntegrationsSettings's slackIssueSlaHighRisk"
+            },
+            {
+              "name": "slackIssueStatusChangedAll",
+              "type": "Boolean",
+              "description": "The IntegrationsSettings's slackIssueStatusChangedAll"
+            },
+            {
+              "name": "slackIssueStatusChangedDone",
+              "type": "Boolean",
+              "description": "The IntegrationsSettings's slackIssueStatusChangedDone"
+            },
+            {
+              "name": "slackProjectUpdateCreated",
+              "type": "Boolean",
+              "description": "The IntegrationsSettings's slackProjectUpdateCreated"
+            },
+            {
+              "name": "slackProjectUpdateCreatedToTeam",
+              "type": "Boolean",
+              "description": "The IntegrationsSettings's slackProjectUpdateCreatedToTeam"
+            },
+            {
+              "name": "slackProjectUpdateCreatedToWorkspace",
+              "type": "Boolean",
+              "description": "The IntegrationsSettings's slackProjectUpdateCreatedToWorkspace"
+            }
+          ],
+          "events": [],
+          "description": "A IntegrationsSettings",
+          "actions": []
+        },
+        {
+          "name": "Issue",
+          "fields": [
+            {
+              "name": "boardOrder",
+              "type": "Float",
+              "description": "The Issue's boardOrder"
+            },
+            {
+              "name": "branchName",
+              "type": "String",
+              "description": "The Issue's branchName"
+            },
+            {
+              "name": "customerTicketCount",
+              "type": "Int",
+              "description": "The Issue's customerTicketCount"
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "description": "The Issue's description"
+            },
+            {
+              "name": "descriptionState",
+              "type": "String",
+              "description": "The Issue's descriptionState"
+            },
+            {
+              "name": "estimate",
+              "type": "Float",
+              "description": "The Issue's estimate"
+            },
+            {
+              "name": "identifier",
+              "type": "String",
+              "description": "The Issue's identifier"
+            },
+            {
+              "name": "labelIds",
+              "type": "String",
+              "description": "The Issue's labelIds"
+            },
+            {
+              "name": "number",
+              "type": "Float",
+              "description": "The Issue's number"
+            },
+            {
+              "name": "previousIdentifiers",
+              "type": "String",
+              "description": "The Issue's previousIdentifiers"
+            },
+            {
+              "name": "priority",
+              "type": "Float",
+              "description": "The Issue's priority"
+            },
+            {
+              "name": "priorityLabel",
+              "type": "String",
+              "description": "The Issue's priorityLabel"
+            },
+            {
+              "name": "prioritySortOrder",
+              "type": "Float",
+              "description": "The Issue's prioritySortOrder"
+            },
+            {
+              "name": "sortOrder",
+              "type": "Float",
+              "description": "The Issue's sortOrder"
+            },
+            {
+              "name": "subIssueSortOrder",
+              "type": "Float",
+              "description": "The Issue's subIssueSortOrder"
+            },
+            {
+              "name": "title",
+              "type": "String",
+              "description": "The Issue's title"
+            },
+            {
+              "name": "trashed",
+              "type": "Boolean",
+              "description": "The Issue's trashed"
+            },
+            {
+              "name": "url",
+              "type": "String",
+              "description": "The Issue's url"
+            }
+          ],
+          "events": [],
+          "description": "A Issue",
+          "actions": []
+        },
+        {
+          "name": "IssueLabel",
+          "fields": [
+            {
+              "name": "color",
+              "type": "String",
+              "description": "The IssueLabel's color"
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "description": "The IssueLabel's description"
+            },
+            {
+              "name": "isGroup",
+              "type": "Boolean",
+              "description": "The IssueLabel's isGroup"
+            },
+            {
+              "name": "name",
+              "type": "String",
+              "description": "The IssueLabel's name"
+            }
+          ],
+          "events": [],
+          "description": "A IssueLabel",
+          "actions": []
+        },
+        {
+          "name": "IssueRelation",
+          "fields": [
+            {
+              "name": "type",
+              "type": "String",
+              "description": "The IssueRelation's type"
+            }
+          ],
+          "events": [],
+          "description": "A IssueRelation",
+          "actions": []
+        },
+        {
+          "name": "Issue",
+          "fields": [
+            {
+              "name": "boardOrder",
+              "type": "Float",
+              "description": "The Issue's boardOrder"
+            },
+            {
+              "name": "branchName",
+              "type": "String",
+              "description": "The Issue's branchName"
+            },
+            {
+              "name": "customerTicketCount",
+              "type": "Int",
+              "description": "The Issue's customerTicketCount"
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "description": "The Issue's description"
+            },
+            {
+              "name": "descriptionState",
+              "type": "String",
+              "description": "The Issue's descriptionState"
+            },
+            {
+              "name": "estimate",
+              "type": "Float",
+              "description": "The Issue's estimate"
+            },
+            {
+              "name": "identifier",
+              "type": "String",
+              "description": "The Issue's identifier"
+            },
+            {
+              "name": "labelIds",
+              "type": "String",
+              "description": "The Issue's labelIds"
+            },
+            {
+              "name": "number",
+              "type": "Float",
+              "description": "The Issue's number"
+            },
+            {
+              "name": "previousIdentifiers",
+              "type": "String",
+              "description": "The Issue's previousIdentifiers"
+            },
+            {
+              "name": "priority",
+              "type": "Float",
+              "description": "The Issue's priority"
+            },
+            {
+              "name": "priorityLabel",
+              "type": "String",
+              "description": "The Issue's priorityLabel"
+            },
+            {
+              "name": "prioritySortOrder",
+              "type": "Float",
+              "description": "The Issue's prioritySortOrder"
+            },
+            {
+              "name": "sortOrder",
+              "type": "Float",
+              "description": "The Issue's sortOrder"
+            },
+            {
+              "name": "subIssueSortOrder",
+              "type": "Float",
+              "description": "The Issue's subIssueSortOrder"
+            },
+            {
+              "name": "title",
+              "type": "String",
+              "description": "The Issue's title"
+            },
+            {
+              "name": "trashed",
+              "type": "Boolean",
+              "description": "The Issue's trashed"
+            },
+            {
+              "name": "url",
+              "type": "String",
+              "description": "The Issue's url"
+            }
+          ],
+          "events": [],
+          "description": "A Issue",
+          "actions": []
+        },
+        {
+          "name": "Organization",
+          "fields": [
+            {
+              "name": "allowMembersToInvite",
+              "type": "Boolean",
+              "description": "The Organization's allowMembersToInvite"
+            },
+            {
+              "name": "allowedAuthServices",
+              "type": "String",
+              "description": "The Organization's allowedAuthServices"
+            },
+            {
+              "name": "createdIssueCount",
+              "type": "Int",
+              "description": "The Organization's createdIssueCount"
+            },
+            {
+              "name": "customerCount",
+              "type": "Int",
+              "description": "The Organization's customerCount"
+            },
+            {
+              "name": "fiscalYearStartMonth",
+              "type": "Float",
+              "description": "The Organization's fiscalYearStartMonth"
+            },
+            {
+              "name": "gitBranchFormat",
+              "type": "String",
+              "description": "The Organization's gitBranchFormat"
+            },
+            {
+              "name": "gitLinkbackMessagesEnabled",
+              "type": "Boolean",
+              "description": "The Organization's gitLinkbackMessagesEnabled"
+            },
+            {
+              "name": "gitPublicLinkbackMessagesEnabled",
+              "type": "Boolean",
+              "description": "The Organization's gitPublicLinkbackMessagesEnabled"
+            },
+            {
+              "name": "logoUrl",
+              "type": "String",
+              "description": "The Organization's logoUrl"
+            },
+            {
+              "name": "name",
+              "type": "String",
+              "description": "The Organization's name"
+            },
+            {
+              "name": "periodUploadVolume",
+              "type": "Float",
+              "description": "The Organization's periodUploadVolume"
+            },
+            {
+              "name": "previousUrlKeys",
+              "type": "String",
+              "description": "The Organization's previousUrlKeys"
+            },
+            {
+              "name": "projectUpdateReminderFrequencyInWeeks",
+              "type": "Float",
+              "description": "The Organization's projectUpdateReminderFrequencyInWeeks"
+            },
+            {
+              "name": "projectUpdateRemindersHour",
+              "type": "Float",
+              "description": "The Organization's projectUpdateRemindersHour"
+            },
+            {
+              "name": "roadmapEnabled",
+              "type": "Boolean",
+              "description": "The Organization's roadmapEnabled"
+            },
+            {
+              "name": "samlEnabled",
+              "type": "Boolean",
+              "description": "The Organization's samlEnabled"
+            },
+            {
+              "name": "scimEnabled",
+              "type": "Boolean",
+              "description": "The Organization's scimEnabled"
+            },
+            {
+              "name": "urlKey",
+              "type": "String",
+              "description": "The Organization's urlKey"
+            },
+            {
+              "name": "userCount",
+              "type": "Int",
+              "description": "The Organization's userCount"
+            }
+          ],
+          "events": [],
+          "description": "A Organization",
+          "actions": []
+        },
+        {
+          "name": "OrganizationInvite",
+          "fields": [
+            {
+              "name": "email",
+              "type": "String",
+              "description": "The OrganizationInvite's email"
+            },
+            {
+              "name": "external",
+              "type": "Boolean",
+              "description": "The OrganizationInvite's external"
+            }
+          ],
+          "events": [],
+          "description": "A OrganizationInvite",
+          "actions": []
+        },
+        {
+          "name": "Project",
+          "fields": [
+            {
+              "name": "color",
+              "type": "String",
+              "description": "The Project's color"
+            },
+            {
+              "name": "completedIssueCountHistory",
+              "type": "Float",
+              "description": "The Project's completedIssueCountHistory"
+            },
+            {
+              "name": "completedScopeHistory",
+              "type": "Float",
+              "description": "The Project's completedScopeHistory"
+            },
+            {
+              "name": "content",
+              "type": "String",
+              "description": "The Project's content"
+            },
+            {
+              "name": "contentState",
+              "type": "String",
+              "description": "The Project's contentState"
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "description": "The Project's description"
+            },
+            {
+              "name": "icon",
+              "type": "String",
+              "description": "The Project's icon"
+            },
+            {
+              "name": "inProgressScopeHistory",
+              "type": "Float",
+              "description": "The Project's inProgressScopeHistory"
+            },
+            {
+              "name": "issueCountHistory",
+              "type": "Float",
+              "description": "The Project's issueCountHistory"
+            },
+            {
+              "name": "name",
+              "type": "String",
+              "description": "The Project's name"
+            },
+            {
+              "name": "priority",
+              "type": "Int",
+              "description": "The Project's priority"
+            },
+            {
+              "name": "prioritySortOrder",
+              "type": "Float",
+              "description": "The Project's prioritySortOrder"
+            },
+            {
+              "name": "progress",
+              "type": "Float",
+              "description": "The Project's progress"
+            },
+            {
+              "name": "scope",
+              "type": "Float",
+              "description": "The Project's scope"
+            },
+            {
+              "name": "scopeHistory",
+              "type": "Float",
+              "description": "The Project's scopeHistory"
+            },
+            {
+              "name": "slackIssueComments",
+              "type": "Boolean",
+              "description": "The Project's slackIssueComments"
+            },
+            {
+              "name": "slackIssueStatuses",
+              "type": "Boolean",
+              "description": "The Project's slackIssueStatuses"
+            },
+            {
+              "name": "slackNewIssue",
+              "type": "Boolean",
+              "description": "The Project's slackNewIssue"
+            },
+            {
+              "name": "slugId",
+              "type": "String",
+              "description": "The Project's slugId"
+            },
+            {
+              "name": "sortOrder",
+              "type": "Float",
+              "description": "The Project's sortOrder"
+            },
+            {
+              "name": "state",
+              "type": "String",
+              "description": "The Project's state"
+            },
+            {
+              "name": "trashed",
+              "type": "Boolean",
+              "description": "The Project's trashed"
+            },
+            {
+              "name": "url",
+              "type": "String",
+              "description": "The Project's url"
+            }
+          ],
+          "events": [],
+          "description": "A Project",
+          "actions": []
+        },
+        {
+          "name": "ProjectLink",
+          "fields": [
+            {
+              "name": "label",
+              "type": "String",
+              "description": "The ProjectLink's label"
+            },
+            {
+              "name": "sortOrder",
+              "type": "Float",
+              "description": "The ProjectLink's sortOrder"
+            },
+            {
+              "name": "url",
+              "type": "String",
+              "description": "The ProjectLink's url"
+            }
+          ],
+          "events": [],
+          "description": "A ProjectLink",
+          "actions": []
+        },
+        {
+          "name": "ProjectMilestone",
+          "fields": [
+            {
+              "name": "description",
+              "type": "String",
+              "description": "The ProjectMilestone's description"
+            },
+            {
+              "name": "descriptionState",
+              "type": "String",
+              "description": "The ProjectMilestone's descriptionState"
+            },
+            {
+              "name": "name",
+              "type": "String",
+              "description": "The ProjectMilestone's name"
+            },
+            {
+              "name": "sortOrder",
+              "type": "Float",
+              "description": "The ProjectMilestone's sortOrder"
+            }
+          ],
+          "events": [],
+          "description": "A ProjectMilestone",
+          "actions": []
+        },
+        {
+          "name": "ProjectRelation",
+          "fields": [
+            {
+              "name": "anchorType",
+              "type": "String",
+              "description": "The ProjectRelation's anchorType"
+            },
+            {
+              "name": "relatedAnchorType",
+              "type": "String",
+              "description": "The ProjectRelation's relatedAnchorType"
+            },
+            {
+              "name": "type",
+              "type": "String",
+              "description": "The ProjectRelation's type"
+            }
+          ],
+          "events": [],
+          "description": "A ProjectRelation",
+          "actions": []
+        },
+        {
+          "name": "ProjectStatus",
+          "fields": [
+            {
+              "name": "color",
+              "type": "String",
+              "description": "The ProjectStatus's color"
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "description": "The ProjectStatus's description"
+            },
+            {
+              "name": "indefinite",
+              "type": "Boolean",
+              "description": "The ProjectStatus's indefinite"
+            },
+            {
+              "name": "name",
+              "type": "String",
+              "description": "The ProjectStatus's name"
+            },
+            {
+              "name": "position",
+              "type": "Float",
+              "description": "The ProjectStatus's position"
+            }
+          ],
+          "events": [],
+          "description": "A ProjectStatus",
+          "actions": []
+        },
+        {
+          "name": "ProjectUpdate",
+          "fields": [
+            {
+              "name": "body",
+              "type": "String",
+              "description": "The ProjectUpdate's body"
+            },
+            {
+              "name": "bodyData",
+              "type": "String",
+              "description": "The ProjectUpdate's bodyData"
+            },
+            {
+              "name": "diffMarkdown",
+              "type": "String",
+              "description": "The ProjectUpdate's diffMarkdown"
+            },
+            {
+              "name": "isDiffHidden",
+              "type": "Boolean",
+              "description": "The ProjectUpdate's isDiffHidden"
+            },
+            {
+              "name": "slugId",
+              "type": "String",
+              "description": "The ProjectUpdate's slugId"
+            },
+            {
+              "name": "url",
+              "type": "String",
+              "description": "The ProjectUpdate's url"
+            }
+          ],
+          "events": [],
+          "description": "A ProjectUpdate",
+          "actions": []
+        },
+        {
+          "name": "ProjectUpdateInteraction",
+          "fields": [],
+          "events": [],
+          "description": "A ProjectUpdateInteraction",
+          "actions": []
+        },
+        {
+          "name": "Roadmap",
+          "fields": [
+            {
+              "name": "color",
+              "type": "String",
+              "description": "The Roadmap's color"
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "description": "The Roadmap's description"
+            },
+            {
+              "name": "name",
+              "type": "String",
+              "description": "The Roadmap's name"
+            },
+            {
+              "name": "slugId",
+              "type": "String",
+              "description": "The Roadmap's slugId"
+            },
+            {
+              "name": "sortOrder",
+              "type": "Float",
+              "description": "The Roadmap's sortOrder"
+            },
+            {
+              "name": "url",
+              "type": "String",
+              "description": "The Roadmap's url"
+            }
+          ],
+          "events": [],
+          "description": "A Roadmap",
+          "actions": []
+        },
+        {
+          "name": "RoadmapToProject",
+          "fields": [
+            {
+              "name": "sortOrder",
+              "type": "String",
+              "description": "The RoadmapToProject's sortOrder"
+            }
+          ],
+          "events": [],
+          "description": "A RoadmapToProject",
+          "actions": []
+        },
+        {
+          "name": "Team",
+          "fields": [
+            {
+              "name": "autoArchivePeriod",
+              "type": "Float",
+              "description": "The Team's autoArchivePeriod"
+            },
+            {
+              "name": "autoCloseChildIssues",
+              "type": "Boolean",
+              "description": "The Team's autoCloseChildIssues"
+            },
+            {
+              "name": "autoCloseParentIssues",
+              "type": "Boolean",
+              "description": "The Team's autoCloseParentIssues"
+            },
+            {
+              "name": "autoClosePeriod",
+              "type": "Float",
+              "description": "The Team's autoClosePeriod"
+            },
+            {
+              "name": "autoCloseStateId",
+              "type": "String",
+              "description": "The Team's autoCloseStateId"
+            },
+            {
+              "name": "color",
+              "type": "String",
+              "description": "The Team's color"
+            },
+            {
+              "name": "cycleCalenderUrl",
+              "type": "String",
+              "description": "The Team's cycleCalenderUrl"
+            },
+            {
+              "name": "cycleCooldownTime",
+              "type": "Float",
+              "description": "The Team's cycleCooldownTime"
+            },
+            {
+              "name": "cycleDuration",
+              "type": "Float",
+              "description": "The Team's cycleDuration"
+            },
+            {
+              "name": "cycleIssueAutoAssignCompleted",
+              "type": "Boolean",
+              "description": "The Team's cycleIssueAutoAssignCompleted"
+            },
+            {
+              "name": "cycleIssueAutoAssignStarted",
+              "type": "Boolean",
+              "description": "The Team's cycleIssueAutoAssignStarted"
+            },
+            {
+              "name": "cycleLockToActive",
+              "type": "Boolean",
+              "description": "The Team's cycleLockToActive"
+            },
+            {
+              "name": "cycleStartDay",
+              "type": "Float",
+              "description": "The Team's cycleStartDay"
+            },
+            {
+              "name": "cyclesEnabled",
+              "type": "Boolean",
+              "description": "The Team's cyclesEnabled"
+            },
+            {
+              "name": "defaultIssueEstimate",
+              "type": "Float",
+              "description": "The Team's defaultIssueEstimate"
+            },
+            {
+              "name": "defaultTemplateForMembersId",
+              "type": "String",
+              "description": "The Team's defaultTemplateForMembersId"
+            },
+            {
+              "name": "defaultTemplateForNonMembersId",
+              "type": "String",
+              "description": "The Team's defaultTemplateForNonMembersId"
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "description": "The Team's description"
+            },
+            {
+              "name": "groupIssueHistory",
+              "type": "Boolean",
+              "description": "The Team's groupIssueHistory"
+            },
+            {
+              "name": "icon",
+              "type": "String",
+              "description": "The Team's icon"
+            },
+            {
+              "name": "inviteHash",
+              "type": "String",
+              "description": "The Team's inviteHash"
+            },
+            {
+              "name": "issueCount",
+              "type": "Int",
+              "description": "The Team's issueCount"
+            },
+            {
+              "name": "issueEstimationAllowZero",
+              "type": "Boolean",
+              "description": "The Team's issueEstimationAllowZero"
+            },
+            {
+              "name": "issueEstimationExtended",
+              "type": "Boolean",
+              "description": "The Team's issueEstimationExtended"
+            },
+            {
+              "name": "issueEstimationType",
+              "type": "String",
+              "description": "The Team's issueEstimationType"
+            },
+            {
+              "name": "issueOrderingNoPriorityFirst",
+              "type": "Boolean",
+              "description": "The Team's issueOrderingNoPriorityFirst"
+            },
+            {
+              "name": "issueSortOrderDefaultToBottom",
+              "type": "Boolean",
+              "description": "The Team's issueSortOrderDefaultToBottom"
+            },
+            {
+              "name": "joinByDefault",
+              "type": "Boolean",
+              "description": "The Team's joinByDefault"
+            },
+            {
+              "name": "key",
+              "type": "String",
+              "description": "The Team's key"
+            },
+            {
+              "name": "name",
+              "type": "String",
+              "description": "The Team's name"
+            },
+            {
+              "name": "private",
+              "type": "Boolean",
+              "description": "The Team's private"
+            },
+            {
+              "name": "requirePriorityToLeaveTriage",
+              "type": "Boolean",
+              "description": "The Team's requirePriorityToLeaveTriage"
+            },
+            {
+              "name": "scimGroupName",
+              "type": "String",
+              "description": "The Team's scimGroupName"
+            },
+            {
+              "name": "scimManaged",
+              "type": "Boolean",
+              "description": "The Team's scimManaged"
+            },
+            {
+              "name": "setIssueSortOrderOnStateChange",
+              "type": "String",
+              "description": "The Team's setIssueSortOrderOnStateChange"
+            },
+            {
+              "name": "slackIssueComments",
+              "type": "Boolean",
+              "description": "The Team's slackIssueComments"
+            },
+            {
+              "name": "slackIssueStatuses",
+              "type": "Boolean",
+              "description": "The Team's slackIssueStatuses"
+            },
+            {
+              "name": "slackNewIssue",
+              "type": "Boolean",
+              "description": "The Team's slackNewIssue"
+            },
+            {
+              "name": "timezone",
+              "type": "String",
+              "description": "The Team's timezone"
+            },
+            {
+              "name": "triageEnabled",
+              "type": "Boolean",
+              "description": "The Team's triageEnabled"
+            },
+            {
+              "name": "upcomingCycleCount",
+              "type": "Float",
+              "description": "The Team's upcomingCycleCount"
+            }
+          ],
+          "events": [],
+          "description": "A Team",
+          "actions": []
+        },
+        {
+          "name": "TeamMembership",
+          "fields": [
+            {
+              "name": "owner",
+              "type": "Boolean",
+              "description": "The TeamMembership's owner"
+            },
+            {
+              "name": "sortOrder",
+              "type": "Float",
+              "description": "The TeamMembership's sortOrder"
+            }
+          ],
+          "events": [],
+          "description": "A TeamMembership",
+          "actions": []
+        },
+        {
+          "name": "Template",
+          "fields": [
+            {
+              "name": "description",
+              "type": "String",
+              "description": "The Template's description"
+            },
+            {
+              "name": "name",
+              "type": "String",
+              "description": "The Template's name"
+            },
+            {
+              "name": "sortOrder",
+              "type": "Float",
+              "description": "The Template's sortOrder"
+            },
+            {
+              "name": "type",
+              "type": "String",
+              "description": "The Template's type"
+            }
+          ],
+          "events": [],
+          "description": "A Template",
+          "actions": []
+        },
+        {
+          "name": "Template",
+          "fields": [
+            {
+              "name": "description",
+              "type": "String",
+              "description": "The Template's description"
+            },
+            {
+              "name": "name",
+              "type": "String",
+              "description": "The Template's name"
+            },
+            {
+              "name": "sortOrder",
+              "type": "Float",
+              "description": "The Template's sortOrder"
+            },
+            {
+              "name": "type",
+              "type": "String",
+              "description": "The Template's type"
+            }
+          ],
+          "events": [],
+          "description": "A Template",
+          "actions": []
+        },
+        {
+          "name": "Template",
+          "fields": [
+            {
+              "name": "description",
+              "type": "String",
+              "description": "The Template's description"
+            },
+            {
+              "name": "name",
+              "type": "String",
+              "description": "The Template's name"
+            },
+            {
+              "name": "sortOrder",
+              "type": "Float",
+              "description": "The Template's sortOrder"
+            },
+            {
+              "name": "type",
+              "type": "String",
+              "description": "The Template's type"
+            }
+          ],
+          "events": [],
+          "description": "A Template",
+          "actions": []
+        },
+        {
+          "name": "TimeSchedule",
+          "fields": [
+            {
+              "name": "externalId",
+              "type": "String",
+              "description": "The TimeSchedule's externalId"
+            },
+            {
+              "name": "externalUrl",
+              "type": "String",
+              "description": "The TimeSchedule's externalUrl"
+            },
+            {
+              "name": "name",
+              "type": "String",
+              "description": "The TimeSchedule's name"
+            }
+          ],
+          "events": [],
+          "description": "A TimeSchedule",
+          "actions": []
+        },
+        {
+          "name": "TriageResponsibility",
+          "fields": [],
+          "events": [],
+          "description": "A TriageResponsibility",
+          "actions": []
+        },
+        {
+          "name": "User",
+          "fields": [
+            {
+              "name": "active",
+              "type": "Boolean",
+              "description": "The User's active"
+            },
+            {
+              "name": "admin",
+              "type": "Boolean",
+              "description": "The User's admin"
+            },
+            {
+              "name": "avatarBackgroundColor",
+              "type": "String",
+              "description": "The User's avatarBackgroundColor"
+            },
+            {
+              "name": "avatarUrl",
+              "type": "String",
+              "description": "The User's avatarUrl"
+            },
+            {
+              "name": "calendarHash",
+              "type": "String",
+              "description": "The User's calendarHash"
+            },
+            {
+              "name": "createdIssueCount",
+              "type": "Int",
+              "description": "The User's createdIssueCount"
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "description": "The User's description"
+            },
+            {
+              "name": "disableReason",
+              "type": "String",
+              "description": "The User's disableReason"
+            },
+            {
+              "name": "displayName",
+              "type": "String",
+              "description": "The User's displayName"
+            },
+            {
+              "name": "email",
+              "type": "String",
+              "description": "The User's email"
+            },
+            {
+              "name": "guest",
+              "type": "Boolean",
+              "description": "The User's guest"
+            },
+            {
+              "name": "initials",
+              "type": "String",
+              "description": "The User's initials"
+            },
+            {
+              "name": "inviteHash",
+              "type": "String",
+              "description": "The User's inviteHash"
+            },
+            {
+              "name": "isMe",
+              "type": "Boolean",
+              "description": "The User's isMe"
+            },
+            {
+              "name": "name",
+              "type": "String",
+              "description": "The User's name"
+            },
+            {
+              "name": "statusEmoji",
+              "type": "String",
+              "description": "The User's statusEmoji"
+            },
+            {
+              "name": "statusLabel",
+              "type": "String",
+              "description": "The User's statusLabel"
+            },
+            {
+              "name": "timezone",
+              "type": "String",
+              "description": "The User's timezone"
+            },
+            {
+              "name": "url",
+              "type": "String",
+              "description": "The User's url"
+            }
+          ],
+          "events": [],
+          "description": "A User",
+          "actions": []
+        },
+        {
+          "name": "UserSettings",
+          "fields": [
+            {
+              "name": "calendarHash",
+              "type": "String",
+              "description": "The UserSettings's calendarHash"
+            },
+            {
+              "name": "showFullUserNames",
+              "type": "Boolean",
+              "description": "The UserSettings's showFullUserNames"
+            },
+            {
+              "name": "subscribedToChangelog",
+              "type": "Boolean",
+              "description": "The UserSettings's subscribedToChangelog"
+            },
+            {
+              "name": "subscribedToDPA",
+              "type": "Boolean",
+              "description": "The UserSettings's subscribedToDPA"
+            },
+            {
+              "name": "subscribedToInviteAccepted",
+              "type": "Boolean",
+              "description": "The UserSettings's subscribedToInviteAccepted"
+            },
+            {
+              "name": "subscribedToPrivacyLegalUpdates",
+              "type": "Boolean",
+              "description": "The UserSettings's subscribedToPrivacyLegalUpdates"
+            },
+            {
+              "name": "subscribedToUnreadNotificationsReminder",
+              "type": "Boolean",
+              "description": "The UserSettings's subscribedToUnreadNotificationsReminder"
+            },
+            {
+              "name": "unsubscribedFrom",
+              "type": "String",
+              "description": "The UserSettings's unsubscribedFrom"
+            }
+          ],
+          "events": [],
+          "description": "A UserSettings",
+          "actions": []
+        },
+        {
+          "name": "User",
+          "fields": [
+            {
+              "name": "active",
+              "type": "Boolean",
+              "description": "The User's active"
+            },
+            {
+              "name": "admin",
+              "type": "Boolean",
+              "description": "The User's admin"
+            },
+            {
+              "name": "avatarBackgroundColor",
+              "type": "String",
+              "description": "The User's avatarBackgroundColor"
+            },
+            {
+              "name": "avatarUrl",
+              "type": "String",
+              "description": "The User's avatarUrl"
+            },
+            {
+              "name": "calendarHash",
+              "type": "String",
+              "description": "The User's calendarHash"
+            },
+            {
+              "name": "createdIssueCount",
+              "type": "Int",
+              "description": "The User's createdIssueCount"
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "description": "The User's description"
+            },
+            {
+              "name": "disableReason",
+              "type": "String",
+              "description": "The User's disableReason"
+            },
+            {
+              "name": "displayName",
+              "type": "String",
+              "description": "The User's displayName"
+            },
+            {
+              "name": "email",
+              "type": "String",
+              "description": "The User's email"
+            },
+            {
+              "name": "guest",
+              "type": "Boolean",
+              "description": "The User's guest"
+            },
+            {
+              "name": "initials",
+              "type": "String",
+              "description": "The User's initials"
+            },
+            {
+              "name": "inviteHash",
+              "type": "String",
+              "description": "The User's inviteHash"
+            },
+            {
+              "name": "isMe",
+              "type": "Boolean",
+              "description": "The User's isMe"
+            },
+            {
+              "name": "name",
+              "type": "String",
+              "description": "The User's name"
+            },
+            {
+              "name": "statusEmoji",
+              "type": "String",
+              "description": "The User's statusEmoji"
+            },
+            {
+              "name": "statusLabel",
+              "type": "String",
+              "description": "The User's statusLabel"
+            },
+            {
+              "name": "timezone",
+              "type": "String",
+              "description": "The User's timezone"
+            },
+            {
+              "name": "url",
+              "type": "String",
+              "description": "The User's url"
+            }
+          ],
+          "events": [],
+          "description": "A User",
+          "actions": []
+        },
+        {
+          "name": "Webhook",
+          "fields": [
+            {
+              "name": "allPublicTeams",
+              "type": "Boolean",
+              "description": "The Webhook's allPublicTeams"
+            },
+            {
+              "name": "enabled",
+              "type": "Boolean",
+              "description": "The Webhook's enabled"
+            },
+            {
+              "name": "label",
+              "type": "String",
+              "description": "The Webhook's label"
+            },
+            {
+              "name": "resourceTypes",
+              "type": "String",
+              "description": "The Webhook's resourceTypes"
+            },
+            {
+              "name": "secret",
+              "type": "String",
+              "description": "The Webhook's secret"
+            },
+            {
+              "name": "url",
+              "type": "String",
+              "description": "The Webhook's url"
+            }
+          ],
+          "events": [],
+          "description": "A Webhook",
+          "actions": []
+        },
+        {
+          "name": "WorkflowState",
+          "fields": [
+            {
+              "name": "color",
+              "type": "String",
+              "description": "The WorkflowState's color"
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "description": "The WorkflowState's description"
+            },
+            {
+              "name": "name",
+              "type": "String",
+              "description": "The WorkflowState's name"
+            },
+            {
+              "name": "position",
+              "type": "Float",
+              "description": "The WorkflowState's position"
+            },
+            {
+              "name": "type",
+              "type": "String",
+              "description": "The WorkflowState's type"
+            }
+          ],
+          "events": [],
+          "description": "A WorkflowState",
+          "actions": []
+        }
+      ]
+    }
+  }
+  

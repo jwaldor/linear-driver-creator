@@ -1,6 +1,11 @@
 import fs from "fs";
 import path from "path";
 import { buildSchema, GraphQLObjectType, GraphQLSchema } from "graphql";
+import {
+  getIdQueryFields,
+  getNodeTypes,
+  getNodeTypeScalarFields,
+} from "./helpers";
 
 // Load the GraphQL schema from the file
 const schemaPath = path.join(__dirname, "schema.graphql");
@@ -13,51 +18,30 @@ const schema = buildSchema(typeDefs);
 console.log("Schema Built:", schema);
 
 // Add the following code to get types implementing Node
-const nodeTypes = Object.values(schema.getTypeMap())
-  .filter(
-    (type): type is GraphQLObjectType =>
-      type instanceof GraphQLObjectType &&
-      type.getInterfaces().some((iface) => iface.name === "Node")
-  )
-  .map((type) => type.name);
+const nodeTypes = getNodeTypes(schema);
 
 console.log("Types implementing Node:", nodeTypes);
 
 // Add the following code to associate Node types with their scalar fields
-const nodeTypeScalarFields = Object.fromEntries(
-  nodeTypes.map((typeName) => {
-    const type = schema.getType(typeName) as GraphQLObjectType;
-    const fields = type.getFields();
-    const scalarFields = Object.entries(fields)
-      .filter(([_, field]) => {
-        const fieldType = field.type.toString().replace(/[[\]!]/g, "");
-        return (
-          fieldType === "String" ||
-          fieldType === "Float" ||
-          // fieldType === "DateTime" ||
-          fieldType === "Boolean" ||
-          // fieldType === "JSONObject" ||
-          fieldType === "Int"
-        );
-      })
-      .map(([fieldName, field]) => {
-        const fieldType = field.type.toString().replace(/[[\]!]/g, "");
-        return { [fieldName]: fieldType };
-      });
-    return [typeName, scalarFields];
-  })
-);
+const nodeTypeScalarFields = getNodeTypeScalarFields(nodeTypes, schema);
+
+console.log("nodeTypeScalarFields", nodeTypeScalarFields);
 
 // Add the following code to find Query fields returning Node types
+
+// const idQueryFields = getIdQueryFields(schema, nodeTypes);
+
 const queryType = schema.getQueryType();
 
 if (queryType) {
   const queryFields = queryType.getFields();
+  console.log("queryFields", queryFields);
   const nodeQueries: Array<[string, string, string[]]> = Object.entries(
     queryFields
   )
     .filter(([_, field]) => {
       const returnType = field.type.toString().replace(/[[\]!]/g, "");
+
       return nodeTypes.includes(returnType);
       // &&
       // field.args.every((arg) => arg.type.toString() === "String!")
@@ -80,6 +64,7 @@ if (queryType) {
   const collectionSchemas: Array<string> = [];
   const collectionTypes: Array<string> = [];
   const baseSchemas: Array<string> = [];
+  console.log("nodeQueries", nodeQueries);
   nodeQueries.forEach(([fieldName, returnType, args]) => {
     collectionSchemas.push(
       generateCollectionSchema([fieldName, returnType, args.join(",")])
@@ -113,40 +98,32 @@ if (queryType) {
   // Line 3`;
   //   const prefixedString = appendToEachLine(exampleString, "> ");
   //   console.log(prefixedString);
-  const memconfig = `
+  const schema = `
     {
       "schema": {
       "types": [
-        ${appendToEachLine(collectionSchemas.join(",\n"), "        ")},
         ${appendToEachLine(rootSchema, "        ")},
+        ${appendToEachLine(collectionSchemas.join(",\n"), "        ")},
         ${appendToEachLine(baseSchemas.join(",\n"), "        ")}
       ]
     }
   }
   `;
-  console.log("schemas", memconfig);
-  const types = rootType + "\n" + collectionTypes.join("\n");
-  console.log(types);
+  console.log("schemas", schema);
+  const index = rootType + "\n" + collectionTypes.join("\n");
+  console.log(index);
 
-  // console.log("Generated Root Schema:");
-
-  // console.log(collectionTypes);
   // Create the output directory if it doesn't exist
-  // const outputDir = path.join(__dirname, "output");
-  // if (!fs.existsSync(outputDir)) {
-  //   fs.mkdirSync(outputDir);
-  // }
+  const outputDir = path.join(__dirname, "output");
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir);
+  }
 
-  // // Write collectionSchemas to a file
-  // const schemasContent = JSON.stringify(collectionSchemas.join("\n"), null, 2);
-  // fs.writeFileSync(
-  //   path.join(outputDir, "collectionSchemas.json"),
-  //   schemasContent
-  // );
+  const memconfig = schema;
+  // fs.writeFileSync(path.join(outputDir, "memconfig.json"), memconfig);
 
   // // Write collectionTypes to a file
-  // const typesContent = collectionTypes.join("\n");
-  // fs.writeFileSync(path.join(outputDir, "collectionTypes.ts"), typesContent);
+  // fs.writeFileSync(path.join(outputDir, "index.ts"), index);
 
   // console.log("Files have been written to the /output folder.");
 }
@@ -201,31 +178,9 @@ function generateBaseSchema(arr: Array<string>): string {
 
   const schema = {
     name: returnType,
-    fields: [
-      ...fields,
-      {
-        name: "one",
-        type: returnType,
-        params:
-          args.length > 0
-            ? [
-                {
-                  name: args.split(":")[0],
-                  type: args.split(":")[1].trim().replace("!", ""),
-                },
-              ]
-            : [],
-        description: `Field representing a single ${returnType}`,
-      },
-      {
-        name: "page",
-        type: `${returnType}Page`,
-        params: [],
-        description: `Field representing a page of ${returnType}s`,
-      },
-    ],
+    fields: [...fields],
     events: [],
-    description: `Collection of ${returnType}`,
+    description: `A ${returnType}`,
     actions: [],
   };
 
@@ -251,12 +206,6 @@ function generateCollectionSchema(arr: Array<string>): string {
           }
         ],
         "description": "Field representing a single ${arr[1]}"
-      },
-      {
-        "name": "page",
-        "type": "${arr[1]}Page",
-        "params": [],
-        "description": "Field representing a page of ${arr[1]}s"
       }
     ],
     "events": [],
@@ -278,10 +227,7 @@ function generateCollectionType(arr: Array<string>) {
             .map((field) => Object.keys(field)[0])
             .join("\n          ")}
         }
-      }
-      console.log(query);
-      //const result = await info.client.query(query);
-      //return result.data[arr[1]](arr[2]);\`
+      }\`
     }
   };
   `;
