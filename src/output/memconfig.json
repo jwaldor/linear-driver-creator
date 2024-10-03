@@ -2570,5 +2570,8 @@
           "actions": []
         }
     ]
+  },
+  "dependencies": {
+    "http": "http:"
   }
 }

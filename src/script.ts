@@ -79,6 +79,9 @@ const memconfig = `
       ${appendToEachLine(collectionSchemas.join(",\n"), "        ")},
       ${appendToEachLine(baseSchemas.join(",\n"), "        ")}
     ]
+  },
+  "dependencies": {
+    "http": "http:"
   }
 }
 `;
@@ -86,7 +89,7 @@ console.log("schemas", schema);
 const index =
   `import { nodes, state } from "membrane";
   
-  async function makeLinearRequest(query: string): Promise<any> {
+  async function makeLinearRequest(input: string): Promise<any> {
   const apiKey = state.api_key;
   if (!apiKey) {
     throw new Error('api_key is not set');
@@ -98,7 +101,7 @@ const index =
       'Content-Type': 'application/json',
       'Authorization': apiKey,
     },
-    body: JSON.stringify({ query }),
+    body: JSON.stringify({query:input.replace(/\\n/g, "")}),,
   });
 
   if (!response.ok) {
@@ -129,7 +132,13 @@ if (!fs.existsSync(outputDir)) {
 
 function generateRootType(types: Array<string>) {
   return `export const Root = {
-  ${types.map((type) => `${type}: () => ({})`).join(",\n  ")}
+  ${types.map((type) => `${type}: () => ({})`).join(",\n  ")},
+    configure: async (args) => {
+    if (args.api_key !== state.api_key) {
+      console.log("Saving API key");
+      state.api_key = args.api_key;
+    }
+  },
 };`;
 }
 
@@ -220,7 +229,7 @@ function generateCollectionType(arr: Array<string>) {
 
     async one(args, { info }) {
       const query =\`
-      query {
+      {
         ${arr[0]}(${arr[2].length > 0 ? `id: args.id` : ""}) {
           ${nodeTypeScalarFields[arr[1]]
             .map((field) => Object.keys(field)[0])
@@ -235,7 +244,6 @@ function generateCollectionType(arr: Array<string>) {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   `;

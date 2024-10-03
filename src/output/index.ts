@@ -1,6 +1,6 @@
 import { nodes, state } from "membrane";
   
-  async function makeLinearRequest(query: string): Promise<any> {
+  async function makeLinearRequest(input: string): Promise<any> {
   const apiKey = state.api_key;
   if (!apiKey) {
     throw new Error('api_key is not set');
@@ -12,7 +12,7 @@ import { nodes, state } from "membrane";
       'Content-Type': 'application/json',
       'Authorization': apiKey,
     },
-    body: JSON.stringify({ query }),
+    body: JSON.stringify({query:input.replace(/\n/g, "")}),,
   });
 
   if (!response.ok) {
@@ -61,14 +61,20 @@ export const Root = {
   triageresponsibility: () => ({}),
   user: () => ({}),
   webhook: () => ({}),
-  workflowstate: () => ({})
+  workflowstate: () => ({}),
+    configure: async (args) => {
+    if (args.api_key !== state.api_key) {
+      console.log("Saving API key");
+      state.api_key = args.api_key;
+    }
+  },
 };
 
   export const AttachmentCollection = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         attachment(id: args.id) {
           groupBySource
           sourceType
@@ -85,7 +91,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -94,7 +99,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         attachmentIssue(id: args.id) {
           boardOrder
           branchName
@@ -124,7 +129,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -133,7 +137,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         customView(id: args.id) {
           color
           description
@@ -152,7 +156,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -161,7 +164,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         customer(id: args.id) {
           domains
           externalIds
@@ -180,7 +183,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -189,7 +191,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         customerNeed(id: args.id) {
           body
           bodyData
@@ -204,7 +206,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -213,7 +214,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         customerStatus(id: args.id) {
           color
           description
@@ -229,7 +230,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -238,7 +238,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         customerTier(id: args.id) {
           color
           description
@@ -254,7 +254,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -263,7 +262,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         cycle(id: args.id) {
           completedIssueCountHistory
           completedScopeHistory
@@ -284,7 +283,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -293,7 +291,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         document(id: args.id) {
           color
           content
@@ -315,7 +313,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -324,7 +321,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         emoji(id: args.id) {
           name
           source
@@ -339,7 +336,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -348,7 +344,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         entityExternalLink(id: args.id) {
           label
           sortOrder
@@ -363,7 +359,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -372,7 +367,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         externalUser(id: args.id) {
           avatarUrl
           displayName
@@ -388,7 +383,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -397,7 +391,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         favorite(id: args.id) {
           color
           detail
@@ -418,7 +412,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -427,7 +420,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         initiative(id: args.id) {
           color
           description
@@ -446,7 +439,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -455,7 +447,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         initiativeToProject(id: args.id) {
           sortOrder
         }
@@ -468,7 +460,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -477,7 +468,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         integration(id: args.id) {
           service
         }
@@ -490,7 +481,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -499,7 +489,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         integrationTemplate(id: args.id) {
           foreignEntityId
         }
@@ -512,7 +502,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -521,7 +510,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         integrationsSettings(id: args.id) {
           slackIssueAddedToTriage
           slackIssueAddedToView
@@ -544,7 +533,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -553,7 +541,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         issue(id: args.id) {
           boardOrder
           branchName
@@ -583,7 +571,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -592,7 +579,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         issueLabel(id: args.id) {
           color
           description
@@ -608,7 +595,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -617,7 +603,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         issueRelation(id: args.id) {
           type
         }
@@ -630,7 +616,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -639,7 +624,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         organizationInvite(id: args.id) {
           email
           external
@@ -653,7 +638,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -662,7 +646,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         project(id: args.id) {
           color
           completedIssueCountHistory
@@ -697,7 +681,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -706,7 +689,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         projectLink(id: args.id) {
           label
           sortOrder
@@ -721,7 +704,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -730,7 +712,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         projectMilestone(id: args.id) {
           description
           descriptionState
@@ -746,7 +728,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -755,7 +736,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         projectRelation(id: args.id) {
           anchorType
           relatedAnchorType
@@ -770,7 +751,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -779,7 +759,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         projectStatus(id: args.id) {
           color
           description
@@ -796,7 +776,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -805,7 +784,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         projectUpdate(id: args.id) {
           body
           bodyData
@@ -823,7 +802,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -832,7 +810,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         projectUpdateInteraction(id: args.id) {
           
         }
@@ -845,7 +823,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -854,7 +831,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         roadmap(id: args.id) {
           color
           description
@@ -872,7 +849,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -881,7 +857,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         roadmapToProject(id: args.id) {
           sortOrder
         }
@@ -894,7 +870,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -903,7 +878,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         team(id: args.id) {
           autoArchivePeriod
           autoCloseChildIssues
@@ -956,7 +931,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -965,7 +939,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         teamMembership(id: args.id) {
           owner
           sortOrder
@@ -979,7 +953,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -988,7 +961,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         template(id: args.id) {
           description
           name
@@ -1004,7 +977,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -1013,7 +985,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         timeSchedule(id: args.id) {
           externalId
           externalUrl
@@ -1028,7 +1000,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -1037,7 +1008,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         triageResponsibility(id: args.id) {
           
         }
@@ -1050,7 +1021,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -1059,7 +1029,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         user(id: args.id) {
           active
           admin
@@ -1090,7 +1060,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -1099,7 +1068,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         webhook(id: args.id) {
           allPublicTeams
           enabled
@@ -1117,7 +1086,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
@@ -1126,7 +1094,7 @@ export const Root = {
 
     async one(args, { info }) {
       const query =`
-      query {
+      {
         workflowState(id: args.id) {
           color
           description
@@ -1143,7 +1111,6 @@ export const Root = {
           return data[firstKey];
         }
       }
-      return null;
     }
   };
   
