@@ -1,6 +1,11 @@
 import fs from "fs";
 import path from "path";
 import { buildSchema, GraphQLObjectType, GraphQLSchema } from "graphql";
+import {
+  getIdQueryFields,
+  getNodeTypes,
+  getNodeTypeScalarFields,
+} from "./helpers";
 
 // Load the GraphQL schema from the file
 const schemaPath = path.join(__dirname, "schema.graphql");
@@ -13,147 +18,127 @@ const schema = buildSchema(typeDefs);
 console.log("Schema Built:", schema);
 
 // Add the following code to get types implementing Node
-const nodeTypes = Object.values(schema.getTypeMap())
-  .filter(
-    (type): type is GraphQLObjectType =>
-      type instanceof GraphQLObjectType &&
-      type.getInterfaces().some((iface) => iface.name === "Node")
-  )
-  .map((type) => type.name);
+const nodeTypes = getNodeTypes(schema);
 
 console.log("Types implementing Node:", nodeTypes);
 
 // Add the following code to associate Node types with their scalar fields
-const nodeTypeScalarFields = Object.fromEntries(
-  nodeTypes.map((typeName) => {
-    const type = schema.getType(typeName) as GraphQLObjectType;
-    const fields = type.getFields();
-    const scalarFields = Object.entries(fields)
-      .filter(([_, field]) => {
-        const fieldType = field.type.toString().replace(/[[\]!]/g, "");
-        return (
-          fieldType === "String" ||
-          fieldType === "Float" ||
-          // fieldType === "DateTime" ||
-          fieldType === "Boolean" ||
-          // fieldType === "JSONObject" ||
-          fieldType === "Int"
-        );
-      })
-      .map(([fieldName, field]) => {
-        const fieldType = field.type.toString().replace(/[[\]!]/g, "");
-        return { [fieldName]: fieldType };
-      });
-    return [typeName, scalarFields];
-  })
-);
+const nodeTypeScalarFields = getNodeTypeScalarFields(nodeTypes, schema);
+
+console.log("nodeTypeScalarFields", nodeTypeScalarFields);
 
 // Add the following code to find Query fields returning Node types
-const queryType = schema.getQueryType();
 
-if (queryType) {
-  const queryFields = queryType.getFields();
-  const nodeQueries: Array<[string, string, string[]]> = Object.entries(
-    queryFields
-  )
-    .filter(([_, field]) => {
-      const returnType = field.type.toString().replace(/[[\]!]/g, "");
-      return nodeTypes.includes(returnType);
-      // &&
-      // field.args.every((arg) => arg.type.toString() === "String!")
-    })
-    .map(([fieldName, field]) => {
-      const returnType = field.type.toString().replace(/[[\]!]/g, "");
-      const args: string[] = field.args.map(
-        (arg) => `${arg.name}: ${arg.type.toString()}`
-      );
-      return [fieldName as string, returnType as string, args as string[]];
-    });
-  // as Array<[string, string, string[]]>;
+const idQueryFields = getIdQueryFields(schema, nodeTypes);
 
-  // console.log("Query fields returning Node types with parameters:");
-  // nodeQueries.forEach(([fieldName, returnType, args]) => {
-  //   console.log(`${fieldName}(${args}): ${returnType}`);
-  //   console.log(args);
-  // });
-
-  const collectionSchemas: Array<string> = [];
-  const collectionTypes: Array<string> = [];
-  const baseSchemas: Array<string> = [];
-  nodeQueries.forEach(([fieldName, returnType, args]) => {
-    collectionSchemas.push(
-      generateCollectionSchema([fieldName, returnType, args.join(",")])
-    );
-    collectionTypes.push(
-      generateCollectionType([fieldName, returnType, args.join(",")])
-    );
-    baseSchemas.push(
-      generateBaseSchema([fieldName, returnType, args.join(",")])
-    );
-  });
-  const rootSchema = generateRootSchema(nodeQueries);
-  const rootType = generateRootType(
-    nodeQueries.map(([fieldName, returnType]) => returnType.toLowerCase())
-  );
-
-  // console.log("Generated Root Type:");
-  // console.log(rootType);
-
-  // console.log("collectionTypes", collectionTypes);
-  function appendToEachLine(multilineString: string, prefix: string): string {
-    return multilineString
-      .split("\n")
-      .map((line) => prefix + line)
-      .join("\n");
-  }
-
-  //   // Example usage:
-  //   const exampleString = `Line 1
-  // Line 2
-  // Line 3`;
-  //   const prefixedString = appendToEachLine(exampleString, "> ");
-  //   console.log(prefixedString);
-  const memconfig = `
-    {
-      "schema": {
-      "types": [
-        ${appendToEachLine(collectionSchemas.join(",\n"), "        ")},
-        ${appendToEachLine(rootSchema, "        ")},
-        ${appendToEachLine(baseSchemas.join(",\n"), "        ")}
-      ]
-    }
-  }
-  `;
-  console.log("schemas", memconfig);
-  const types = rootType + "\n" + collectionTypes.join("\n");
-  console.log(types);
-
-  // console.log("Generated Root Schema:");
-
-  // console.log(collectionTypes);
-  // Create the output directory if it doesn't exist
-  // const outputDir = path.join(__dirname, "output");
-  // if (!fs.existsSync(outputDir)) {
-  //   fs.mkdirSync(outputDir);
-  // }
-
-  // // Write collectionSchemas to a file
-  // const schemasContent = JSON.stringify(collectionSchemas.join("\n"), null, 2);
-  // fs.writeFileSync(
-  //   path.join(outputDir, "collectionSchemas.json"),
-  //   schemasContent
-  // );
-
-  // // Write collectionTypes to a file
-  // const typesContent = collectionTypes.join("\n");
-  // fs.writeFileSync(path.join(outputDir, "collectionTypes.ts"), typesContent);
-
-  // console.log("Files have been written to the /output folder.");
+console.log("idQueryFields", idQueryFields);
+if (!idQueryFields) {
+  console.error("No ID query fields found");
+  process.exit(1);
 }
+
+const collectionSchemas: Array<string> = [];
+const collectionTypes: Array<string> = [];
+const baseSchemas: Array<string> = [];
+idQueryFields.forEach(([fieldName, returnType, args]) => {
+  collectionSchemas.push(
+    generateCollectionSchema([fieldName, returnType, args.join(",")])
+  );
+  collectionTypes.push(
+    generateCollectionType([fieldName, returnType, args.join(",")])
+  );
+  baseSchemas.push(generateBaseSchema([fieldName, returnType, args.join(",")]));
+});
+const rootSchema = generateRootSchema(idQueryFields);
+const rootType = generateRootType(
+  idQueryFields.map(([fieldName, returnType]) => returnType.toLowerCase())
+);
+
+// console.log("Generated Root Type:");
+// console.log(rootType);
+
+// console.log("collectionTypes", collectionTypes);
+function appendToEachLine(multilineString: string, prefix: string): string {
+  return multilineString
+    .split("\n")
+    .map((line) => prefix + line)
+    .join("\n");
+}
+
+//   // Example usage:
+//   const exampleString = `Line 1
+// Line 2
+// Line 3`;
+//   const prefixedString = appendToEachLine(exampleString, "> ");
+//   console.log(prefixedString);
+const memconfig = `
+  {
+    "schema": {
+    "types": [
+      ${appendToEachLine(rootSchema, "        ")},
+      ${appendToEachLine(collectionSchemas.join(",\n"), "        ")},
+      ${appendToEachLine(baseSchemas.join(",\n"), "        ")}
+    ]
+  },
+  "dependencies": {
+    "http": "http:"
+  }
+}
+`;
+console.log("schemas", schema);
+const index =
+  `import { nodes, state } from "membrane";
+  
+  async function makeLinearRequest(input: string): Promise<any> {
+  const apiKey = state.api_key;
+  if (!apiKey) {
+    throw new Error('api_key is not set');
+  }
+
+  const response = await fetch('https://api.linear.app/graphql', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': apiKey,
+    },
+    body: JSON.stringify({query:input.replace(/\\n/g, "")}),,
+  });
+
+  if (!response.ok) {
+    throw new Error(\`HTTP error! status: \${response.status}\`);
+  }
+
+  return await response.json();
+}
+    
+` +
+  rootType +
+  "\n" +
+  collectionTypes.join("\n");
+console.log(index);
+
+// Create the output directory if it doesn't exist
+const outputDir = path.join(__dirname, "output");
+if (!fs.existsSync(outputDir)) {
+  fs.mkdirSync(outputDir);
+}
+
+// fs.writeFileSync(path.join(outputDir, "memconfig.json"), memconfig);
+
+// // Write collectionTypes to a file
+// fs.writeFileSync(path.join(outputDir, "index.ts"), index);
+
+// console.log("Files have been written to the /output folder.");
 
 function generateRootType(types: Array<string>) {
   return `export const Root = {
-  ${types.map((type) => `${type}: () => ({})`).join(",\n  ")}
+  ${types.map((type) => `${type}: () => ({})`).join(",\n  ")},
+    configure: async (args) => {
+    if (args.api_key !== state.api_key) {
+      console.log("Saving API key");
+      state.api_key = args.api_key;
+    }
+  },
 };`;
 }
 
@@ -201,31 +186,9 @@ function generateBaseSchema(arr: Array<string>): string {
 
   const schema = {
     name: returnType,
-    fields: [
-      ...fields,
-      {
-        name: "one",
-        type: returnType,
-        params:
-          args.length > 0
-            ? [
-                {
-                  name: args.split(":")[0],
-                  type: args.split(":")[1].trim().replace("!", ""),
-                },
-              ]
-            : [],
-        description: `Field representing a single ${returnType}`,
-      },
-      {
-        name: "page",
-        type: `${returnType}Page`,
-        params: [],
-        description: `Field representing a page of ${returnType}s`,
-      },
-    ],
+    fields: [...fields],
     events: [],
-    description: `Collection of ${returnType}`,
+    description: `A ${returnType}`,
     actions: [],
   };
 
@@ -251,12 +214,6 @@ function generateCollectionSchema(arr: Array<string>): string {
           }
         ],
         "description": "Field representing a single ${arr[1]}"
-      },
-      {
-        "name": "page",
-        "type": "${arr[1]}Page",
-        "params": [],
-        "description": "Field representing a page of ${arr[1]}s"
       }
     ],
     "events": [],
@@ -272,16 +229,21 @@ function generateCollectionType(arr: Array<string>) {
 
     async one(args, { info }) {
       const query =\`
-      query {
+      {
         ${arr[0]}(${arr[2].length > 0 ? `id: args.id` : ""}) {
           ${nodeTypeScalarFields[arr[1]]
             .map((field) => Object.keys(field)[0])
             .join("\n          ")}
         }
+      }\`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
       }
-      console.log(query);
-      //const result = await info.client.query(query);
-      //return result.data[arr[1]](arr[2]);\`
     }
   };
   `;
