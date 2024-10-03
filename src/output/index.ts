@@ -1,8 +1,30 @@
+import { nodes, state } from "membrane";
+  
+  async function makeLinearRequest(query: string): Promise<any> {
+  const apiKey = state.api_key;
+  if (!apiKey) {
+    throw new Error('api_key is not set');
+  }
+
+  const response = await fetch('https://api.linear.app/graphql', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': apiKey,
+    },
+    body: JSON.stringify({ query }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  return await response.json();
+}
+    
 export const Root = {
-  team: () => ({}),
   attachment: () => ({}),
   issue: () => ({}),
-  comment: () => ({}),
   customview: () => ({}),
   customer: () => ({}),
   customerneed: () => ({}),
@@ -22,8 +44,6 @@ export const Root = {
   issue: () => ({}),
   issuelabel: () => ({}),
   issuerelation: () => ({}),
-  issue: () => ({}),
-  organization: () => ({}),
   organizationinvite: () => ({}),
   project: () => ({}),
   projectlink: () => ({}),
@@ -37,69 +57,12 @@ export const Root = {
   team: () => ({}),
   teammembership: () => ({}),
   template: () => ({}),
-  template: () => ({}),
-  template: () => ({}),
   timeschedule: () => ({}),
   triageresponsibility: () => ({}),
-  user: () => ({}),
-  usersettings: () => ({}),
   user: () => ({}),
   webhook: () => ({}),
   workflowstate: () => ({})
 };
-
-  export const TeamCollection = {
-
-    async one(args, { info }) {
-      const query =`
-      query {
-        archivedTeams() {
-          autoArchivePeriod
-          autoCloseChildIssues
-          autoCloseParentIssues
-          autoClosePeriod
-          autoCloseStateId
-          color
-          cycleCalenderUrl
-          cycleCooldownTime
-          cycleDuration
-          cycleIssueAutoAssignCompleted
-          cycleIssueAutoAssignStarted
-          cycleLockToActive
-          cycleStartDay
-          cyclesEnabled
-          defaultIssueEstimate
-          defaultTemplateForMembersId
-          defaultTemplateForNonMembersId
-          description
-          groupIssueHistory
-          icon
-          inviteHash
-          issueCount
-          issueEstimationAllowZero
-          issueEstimationExtended
-          issueEstimationType
-          issueOrderingNoPriorityFirst
-          issueSortOrderDefaultToBottom
-          joinByDefault
-          key
-          name
-          private
-          requirePriorityToLeaveTriage
-          scimGroupName
-          scimManaged
-          setIssueSortOrderOnStateChange
-          slackIssueComments
-          slackIssueStatuses
-          slackNewIssue
-          timezone
-          triageEnabled
-          upcomingCycleCount
-        }
-      }`
-    }
-  };
-  
 
   export const AttachmentCollection = {
 
@@ -114,6 +77,15 @@ export const Root = {
           url
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -144,23 +116,15 @@ export const Root = {
           url
         }
       }`
-    }
-  };
-  
-
-  export const CommentCollection = {
-
-    async one(args, { info }) {
-      const query =`
-      query {
-        comment(id: args.id) {
-          body
-          bodyData
-          quotedText
-          summaryText
-          url
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
         }
-      }`
+      }
+      return null;
     }
   };
   
@@ -180,6 +144,15 @@ export const Root = {
           slugId
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -199,6 +172,15 @@ export const Root = {
           slackChannelId
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -214,6 +196,15 @@ export const Root = {
           priority
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -230,6 +221,15 @@ export const Root = {
           position
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -246,6 +246,15 @@ export const Root = {
           position
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -267,6 +276,15 @@ export const Root = {
           scopeHistory
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -289,6 +307,15 @@ export const Root = {
           url
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -304,6 +331,15 @@ export const Root = {
           url
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -319,6 +355,15 @@ export const Root = {
           url
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -335,6 +380,15 @@ export const Root = {
           name
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -356,6 +410,15 @@ export const Root = {
           url
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -375,6 +438,15 @@ export const Root = {
           trashed
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -388,6 +460,15 @@ export const Root = {
           sortOrder
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -401,6 +482,15 @@ export const Root = {
           service
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -414,6 +504,15 @@ export const Root = {
           foreignEntityId
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -437,6 +536,15 @@ export const Root = {
           slackProjectUpdateCreatedToWorkspace
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -467,6 +575,15 @@ export const Root = {
           url
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -483,6 +600,15 @@ export const Root = {
           name
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -496,67 +622,15 @@ export const Root = {
           type
         }
       }`
-    }
-  };
-  
-
-  export const IssueCollection = {
-
-    async one(args, { info }) {
-      const query =`
-      query {
-        issueVcsBranchSearch(id: args.id) {
-          boardOrder
-          branchName
-          customerTicketCount
-          description
-          descriptionState
-          estimate
-          identifier
-          labelIds
-          number
-          previousIdentifiers
-          priority
-          priorityLabel
-          prioritySortOrder
-          sortOrder
-          subIssueSortOrder
-          title
-          trashed
-          url
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
         }
-      }`
-    }
-  };
-  
-
-  export const OrganizationCollection = {
-
-    async one(args, { info }) {
-      const query =`
-      query {
-        organization() {
-          allowMembersToInvite
-          allowedAuthServices
-          createdIssueCount
-          customerCount
-          fiscalYearStartMonth
-          gitBranchFormat
-          gitLinkbackMessagesEnabled
-          gitPublicLinkbackMessagesEnabled
-          logoUrl
-          name
-          periodUploadVolume
-          previousUrlKeys
-          projectUpdateReminderFrequencyInWeeks
-          projectUpdateRemindersHour
-          roadmapEnabled
-          samlEnabled
-          scimEnabled
-          urlKey
-          userCount
-        }
-      }`
+      }
+      return null;
     }
   };
   
@@ -571,6 +645,15 @@ export const Root = {
           external
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -606,6 +689,15 @@ export const Root = {
           url
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -621,6 +713,15 @@ export const Root = {
           url
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -637,6 +738,15 @@ export const Root = {
           sortOrder
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -652,6 +762,15 @@ export const Root = {
           type
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -669,6 +788,15 @@ export const Root = {
           position
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -687,6 +815,15 @@ export const Root = {
           url
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -700,6 +837,15 @@ export const Root = {
           
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -718,6 +864,15 @@ export const Root = {
           url
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -731,6 +886,15 @@ export const Root = {
           sortOrder
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -784,6 +948,15 @@ export const Root = {
           upcomingCycleCount
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -798,6 +971,15 @@ export const Root = {
           sortOrder
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -814,38 +996,15 @@ export const Root = {
           type
         }
       }`
-    }
-  };
-  
-
-  export const TemplateCollection = {
-
-    async one(args, { info }) {
-      const query =`
-      query {
-        templates() {
-          description
-          name
-          sortOrder
-          type
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
         }
-      }`
-    }
-  };
-  
-
-  export const TemplateCollection = {
-
-    async one(args, { info }) {
-      const query =`
-      query {
-        templatesForIntegration(id: args.id) {
-          description
-          name
-          sortOrder
-          type
-        }
-      }`
+      }
+      return null;
     }
   };
   
@@ -861,6 +1020,15 @@ export const Root = {
           name
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -874,6 +1042,15 @@ export const Root = {
           
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -905,57 +1082,15 @@ export const Root = {
           url
         }
       }`
-    }
-  };
-  
-
-  export const UserSettingsCollection = {
-
-    async one(args, { info }) {
-      const query =`
-      query {
-        userSettings() {
-          calendarHash
-          showFullUserNames
-          subscribedToChangelog
-          subscribedToDPA
-          subscribedToInviteAccepted
-          subscribedToPrivacyLegalUpdates
-          subscribedToUnreadNotificationsReminder
-          unsubscribedFrom
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
         }
-      }`
-    }
-  };
-  
-
-  export const UserCollection = {
-
-    async one(args, { info }) {
-      const query =`
-      query {
-        viewer() {
-          active
-          admin
-          avatarBackgroundColor
-          avatarUrl
-          calendarHash
-          createdIssueCount
-          description
-          disableReason
-          displayName
-          email
-          guest
-          initials
-          inviteHash
-          isMe
-          name
-          statusEmoji
-          statusLabel
-          timezone
-          url
-        }
-      }`
+      }
+      return null;
     }
   };
   
@@ -974,6 +1109,15 @@ export const Root = {
           url
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   
@@ -991,6 +1135,15 @@ export const Root = {
           type
         }
       }`
+      const result = await makeLinearRequest(query);
+      const data = result.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        if (firstKey) {
+          return data[firstKey];
+        }
+      }
+      return null;
     }
   };
   

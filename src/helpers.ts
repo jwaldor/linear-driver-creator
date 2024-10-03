@@ -51,7 +51,15 @@ export function getIdQueryFields(schema: GraphQLSchema, nodeTypes: string[]) {
       .filter(([_, field]) => {
         const returnType = field.type.toString().replace(/[[\]!]/g, "");
 
-        return nodeTypes.includes(returnType);
+        // console.log(
+        //   "field.args",
+        //   field.args.map((arg) => arg.name)
+        // );
+        return (
+          nodeTypes.includes(returnType) &&
+          field.args.length === 1 &&
+          field.args.map((arg) => arg.name)[0] === "id"
+        );
         // &&
         // field.args.every((arg) => arg.type.toString() === "String!")
       })

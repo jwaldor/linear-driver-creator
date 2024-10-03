@@ -1,16 +1,11 @@
 
-    {
-      "schema": {
-      "types": [
-                {
+  {
+    "schema": {
+    "types": [
+              {
           "name": "Root",
           "description": "Driver for the API",
           "fields": [
-            {
-              "name": "team",
-              "type": "TeamCollection",
-              "description": "Collection of Teams"
-            },
             {
               "name": "attachment",
               "type": "AttachmentCollection",
@@ -20,11 +15,6 @@
               "name": "issue",
               "type": "IssueCollection",
               "description": "Collection of Issues"
-            },
-            {
-              "name": "comment",
-              "type": "CommentCollection",
-              "description": "Collection of Comments"
             },
             {
               "name": "customview",
@@ -122,16 +112,6 @@
               "description": "Collection of IssueRelations"
             },
             {
-              "name": "issue",
-              "type": "IssueCollection",
-              "description": "Collection of Issues"
-            },
-            {
-              "name": "organization",
-              "type": "OrganizationCollection",
-              "description": "Collection of Organizations"
-            },
-            {
               "name": "organizationinvite",
               "type": "OrganizationInviteCollection",
               "description": "Collection of OrganizationInvites"
@@ -197,16 +177,6 @@
               "description": "Collection of Templates"
             },
             {
-              "name": "template",
-              "type": "TemplateCollection",
-              "description": "Collection of Templates"
-            },
-            {
-              "name": "template",
-              "type": "TemplateCollection",
-              "description": "Collection of Templates"
-            },
-            {
               "name": "timeschedule",
               "type": "TimeScheduleCollection",
               "description": "Collection of TimeSchedules"
@@ -215,16 +185,6 @@
               "name": "triageresponsibility",
               "type": "TriageResponsibilityCollection",
               "description": "Collection of TriageResponsibilitys"
-            },
-            {
-              "name": "user",
-              "type": "UserCollection",
-              "description": "Collection of Users"
-            },
-            {
-              "name": "usersettings",
-              "type": "UserSettingsCollection",
-              "description": "Collection of UserSettingss"
             },
             {
               "name": "user",
@@ -243,23 +203,7 @@
             }
           ]
         },
-                
-          {
-            "name": "TeamCollection",
-            "fields": [
-              {
-                "name": "one",
-                "type": "Team",
-                "params": [
-                  
-                ],
-                "description": "Field representing a single Team"
-              }
-            ],
-            "events": [],
-            "description": "Collection of Team"
-          },
-        
+              
           {
             "name": "AttachmentCollection",
             "fields": [
@@ -296,25 +240,6 @@
             ],
             "events": [],
             "description": "Collection of Issue"
-          },
-        
-          {
-            "name": "CommentCollection",
-            "fields": [
-              {
-                "name": "one",
-                "type": "Comment",
-                "params": [
-                  {
-                    "name": "hash",
-                    "type": "String,id"
-                  }
-                ],
-                "description": "Field representing a single Comment"
-              }
-            ],
-            "events": [],
-            "description": "Collection of Comment"
           },
         
           {
@@ -679,41 +604,6 @@
           },
         
           {
-            "name": "IssueCollection",
-            "fields": [
-              {
-                "name": "one",
-                "type": "Issue",
-                "params": [
-                  {
-                    "name": "branchName",
-                    "type": "String"
-                  }
-                ],
-                "description": "Field representing a single Issue"
-              }
-            ],
-            "events": [],
-            "description": "Collection of Issue"
-          },
-        
-          {
-            "name": "OrganizationCollection",
-            "fields": [
-              {
-                "name": "one",
-                "type": "Organization",
-                "params": [
-                  
-                ],
-                "description": "Field representing a single Organization"
-              }
-            ],
-            "events": [],
-            "description": "Collection of Organization"
-          },
-        
-          {
             "name": "OrganizationInviteCollection",
             "fields": [
               {
@@ -961,41 +851,6 @@
           },
         
           {
-            "name": "TemplateCollection",
-            "fields": [
-              {
-                "name": "one",
-                "type": "Template",
-                "params": [
-                  
-                ],
-                "description": "Field representing a single Template"
-              }
-            ],
-            "events": [],
-            "description": "Collection of Template"
-          },
-        
-          {
-            "name": "TemplateCollection",
-            "fields": [
-              {
-                "name": "one",
-                "type": "Template",
-                "params": [
-                  {
-                    "name": "integrationType",
-                    "type": "String"
-                  }
-                ],
-                "description": "Field representing a single Template"
-              }
-            ],
-            "events": [],
-            "description": "Collection of Template"
-          },
-        
-          {
             "name": "TimeScheduleCollection",
             "fields": [
               {
@@ -1053,38 +908,6 @@
           },
         
           {
-            "name": "UserSettingsCollection",
-            "fields": [
-              {
-                "name": "one",
-                "type": "UserSettings",
-                "params": [
-                  
-                ],
-                "description": "Field representing a single UserSettings"
-              }
-            ],
-            "events": [],
-            "description": "Collection of UserSettings"
-          },
-        
-          {
-            "name": "UserCollection",
-            "fields": [
-              {
-                "name": "one",
-                "type": "User",
-                "params": [
-                  
-                ],
-                "description": "Field representing a single User"
-              }
-            ],
-            "events": [],
-            "description": "Collection of User"
-          },
-        
-          {
             "name": "WebhookCollection",
             "fields": [
               {
@@ -1121,220 +944,7 @@
             "events": [],
             "description": "Collection of WorkflowState"
           },
-                {
-          "name": "Team",
-          "fields": [
-            {
-              "name": "autoArchivePeriod",
-              "type": "Float",
-              "description": "The Team's autoArchivePeriod"
-            },
-            {
-              "name": "autoCloseChildIssues",
-              "type": "Boolean",
-              "description": "The Team's autoCloseChildIssues"
-            },
-            {
-              "name": "autoCloseParentIssues",
-              "type": "Boolean",
-              "description": "The Team's autoCloseParentIssues"
-            },
-            {
-              "name": "autoClosePeriod",
-              "type": "Float",
-              "description": "The Team's autoClosePeriod"
-            },
-            {
-              "name": "autoCloseStateId",
-              "type": "String",
-              "description": "The Team's autoCloseStateId"
-            },
-            {
-              "name": "color",
-              "type": "String",
-              "description": "The Team's color"
-            },
-            {
-              "name": "cycleCalenderUrl",
-              "type": "String",
-              "description": "The Team's cycleCalenderUrl"
-            },
-            {
-              "name": "cycleCooldownTime",
-              "type": "Float",
-              "description": "The Team's cycleCooldownTime"
-            },
-            {
-              "name": "cycleDuration",
-              "type": "Float",
-              "description": "The Team's cycleDuration"
-            },
-            {
-              "name": "cycleIssueAutoAssignCompleted",
-              "type": "Boolean",
-              "description": "The Team's cycleIssueAutoAssignCompleted"
-            },
-            {
-              "name": "cycleIssueAutoAssignStarted",
-              "type": "Boolean",
-              "description": "The Team's cycleIssueAutoAssignStarted"
-            },
-            {
-              "name": "cycleLockToActive",
-              "type": "Boolean",
-              "description": "The Team's cycleLockToActive"
-            },
-            {
-              "name": "cycleStartDay",
-              "type": "Float",
-              "description": "The Team's cycleStartDay"
-            },
-            {
-              "name": "cyclesEnabled",
-              "type": "Boolean",
-              "description": "The Team's cyclesEnabled"
-            },
-            {
-              "name": "defaultIssueEstimate",
-              "type": "Float",
-              "description": "The Team's defaultIssueEstimate"
-            },
-            {
-              "name": "defaultTemplateForMembersId",
-              "type": "String",
-              "description": "The Team's defaultTemplateForMembersId"
-            },
-            {
-              "name": "defaultTemplateForNonMembersId",
-              "type": "String",
-              "description": "The Team's defaultTemplateForNonMembersId"
-            },
-            {
-              "name": "description",
-              "type": "String",
-              "description": "The Team's description"
-            },
-            {
-              "name": "groupIssueHistory",
-              "type": "Boolean",
-              "description": "The Team's groupIssueHistory"
-            },
-            {
-              "name": "icon",
-              "type": "String",
-              "description": "The Team's icon"
-            },
-            {
-              "name": "inviteHash",
-              "type": "String",
-              "description": "The Team's inviteHash"
-            },
-            {
-              "name": "issueCount",
-              "type": "Int",
-              "description": "The Team's issueCount"
-            },
-            {
-              "name": "issueEstimationAllowZero",
-              "type": "Boolean",
-              "description": "The Team's issueEstimationAllowZero"
-            },
-            {
-              "name": "issueEstimationExtended",
-              "type": "Boolean",
-              "description": "The Team's issueEstimationExtended"
-            },
-            {
-              "name": "issueEstimationType",
-              "type": "String",
-              "description": "The Team's issueEstimationType"
-            },
-            {
-              "name": "issueOrderingNoPriorityFirst",
-              "type": "Boolean",
-              "description": "The Team's issueOrderingNoPriorityFirst"
-            },
-            {
-              "name": "issueSortOrderDefaultToBottom",
-              "type": "Boolean",
-              "description": "The Team's issueSortOrderDefaultToBottom"
-            },
-            {
-              "name": "joinByDefault",
-              "type": "Boolean",
-              "description": "The Team's joinByDefault"
-            },
-            {
-              "name": "key",
-              "type": "String",
-              "description": "The Team's key"
-            },
-            {
-              "name": "name",
-              "type": "String",
-              "description": "The Team's name"
-            },
-            {
-              "name": "private",
-              "type": "Boolean",
-              "description": "The Team's private"
-            },
-            {
-              "name": "requirePriorityToLeaveTriage",
-              "type": "Boolean",
-              "description": "The Team's requirePriorityToLeaveTriage"
-            },
-            {
-              "name": "scimGroupName",
-              "type": "String",
-              "description": "The Team's scimGroupName"
-            },
-            {
-              "name": "scimManaged",
-              "type": "Boolean",
-              "description": "The Team's scimManaged"
-            },
-            {
-              "name": "setIssueSortOrderOnStateChange",
-              "type": "String",
-              "description": "The Team's setIssueSortOrderOnStateChange"
-            },
-            {
-              "name": "slackIssueComments",
-              "type": "Boolean",
-              "description": "The Team's slackIssueComments"
-            },
-            {
-              "name": "slackIssueStatuses",
-              "type": "Boolean",
-              "description": "The Team's slackIssueStatuses"
-            },
-            {
-              "name": "slackNewIssue",
-              "type": "Boolean",
-              "description": "The Team's slackNewIssue"
-            },
-            {
-              "name": "timezone",
-              "type": "String",
-              "description": "The Team's timezone"
-            },
-            {
-              "name": "triageEnabled",
-              "type": "Boolean",
-              "description": "The Team's triageEnabled"
-            },
-            {
-              "name": "upcomingCycleCount",
-              "type": "Float",
-              "description": "The Team's upcomingCycleCount"
-            }
-          ],
-          "events": [],
-          "description": "A Team",
-          "actions": []
-        },
-        {
+              {
           "name": "Attachment",
           "fields": [
             {
@@ -1463,39 +1073,6 @@
           ],
           "events": [],
           "description": "A Issue",
-          "actions": []
-        },
-        {
-          "name": "Comment",
-          "fields": [
-            {
-              "name": "body",
-              "type": "String",
-              "description": "The Comment's body"
-            },
-            {
-              "name": "bodyData",
-              "type": "String",
-              "description": "The Comment's bodyData"
-            },
-            {
-              "name": "quotedText",
-              "type": "String",
-              "description": "The Comment's quotedText"
-            },
-            {
-              "name": "summaryText",
-              "type": "String",
-              "description": "The Comment's summaryText"
-            },
-            {
-              "name": "url",
-              "type": "String",
-              "description": "The Comment's url"
-            }
-          ],
-          "events": [],
-          "description": "A Comment",
           "actions": []
         },
         {
@@ -2186,207 +1763,6 @@
           "actions": []
         },
         {
-          "name": "Issue",
-          "fields": [
-            {
-              "name": "boardOrder",
-              "type": "Float",
-              "description": "The Issue's boardOrder"
-            },
-            {
-              "name": "branchName",
-              "type": "String",
-              "description": "The Issue's branchName"
-            },
-            {
-              "name": "customerTicketCount",
-              "type": "Int",
-              "description": "The Issue's customerTicketCount"
-            },
-            {
-              "name": "description",
-              "type": "String",
-              "description": "The Issue's description"
-            },
-            {
-              "name": "descriptionState",
-              "type": "String",
-              "description": "The Issue's descriptionState"
-            },
-            {
-              "name": "estimate",
-              "type": "Float",
-              "description": "The Issue's estimate"
-            },
-            {
-              "name": "identifier",
-              "type": "String",
-              "description": "The Issue's identifier"
-            },
-            {
-              "name": "labelIds",
-              "type": "String",
-              "description": "The Issue's labelIds"
-            },
-            {
-              "name": "number",
-              "type": "Float",
-              "description": "The Issue's number"
-            },
-            {
-              "name": "previousIdentifiers",
-              "type": "String",
-              "description": "The Issue's previousIdentifiers"
-            },
-            {
-              "name": "priority",
-              "type": "Float",
-              "description": "The Issue's priority"
-            },
-            {
-              "name": "priorityLabel",
-              "type": "String",
-              "description": "The Issue's priorityLabel"
-            },
-            {
-              "name": "prioritySortOrder",
-              "type": "Float",
-              "description": "The Issue's prioritySortOrder"
-            },
-            {
-              "name": "sortOrder",
-              "type": "Float",
-              "description": "The Issue's sortOrder"
-            },
-            {
-              "name": "subIssueSortOrder",
-              "type": "Float",
-              "description": "The Issue's subIssueSortOrder"
-            },
-            {
-              "name": "title",
-              "type": "String",
-              "description": "The Issue's title"
-            },
-            {
-              "name": "trashed",
-              "type": "Boolean",
-              "description": "The Issue's trashed"
-            },
-            {
-              "name": "url",
-              "type": "String",
-              "description": "The Issue's url"
-            }
-          ],
-          "events": [],
-          "description": "A Issue",
-          "actions": []
-        },
-        {
-          "name": "Organization",
-          "fields": [
-            {
-              "name": "allowMembersToInvite",
-              "type": "Boolean",
-              "description": "The Organization's allowMembersToInvite"
-            },
-            {
-              "name": "allowedAuthServices",
-              "type": "String",
-              "description": "The Organization's allowedAuthServices"
-            },
-            {
-              "name": "createdIssueCount",
-              "type": "Int",
-              "description": "The Organization's createdIssueCount"
-            },
-            {
-              "name": "customerCount",
-              "type": "Int",
-              "description": "The Organization's customerCount"
-            },
-            {
-              "name": "fiscalYearStartMonth",
-              "type": "Float",
-              "description": "The Organization's fiscalYearStartMonth"
-            },
-            {
-              "name": "gitBranchFormat",
-              "type": "String",
-              "description": "The Organization's gitBranchFormat"
-            },
-            {
-              "name": "gitLinkbackMessagesEnabled",
-              "type": "Boolean",
-              "description": "The Organization's gitLinkbackMessagesEnabled"
-            },
-            {
-              "name": "gitPublicLinkbackMessagesEnabled",
-              "type": "Boolean",
-              "description": "The Organization's gitPublicLinkbackMessagesEnabled"
-            },
-            {
-              "name": "logoUrl",
-              "type": "String",
-              "description": "The Organization's logoUrl"
-            },
-            {
-              "name": "name",
-              "type": "String",
-              "description": "The Organization's name"
-            },
-            {
-              "name": "periodUploadVolume",
-              "type": "Float",
-              "description": "The Organization's periodUploadVolume"
-            },
-            {
-              "name": "previousUrlKeys",
-              "type": "String",
-              "description": "The Organization's previousUrlKeys"
-            },
-            {
-              "name": "projectUpdateReminderFrequencyInWeeks",
-              "type": "Float",
-              "description": "The Organization's projectUpdateReminderFrequencyInWeeks"
-            },
-            {
-              "name": "projectUpdateRemindersHour",
-              "type": "Float",
-              "description": "The Organization's projectUpdateRemindersHour"
-            },
-            {
-              "name": "roadmapEnabled",
-              "type": "Boolean",
-              "description": "The Organization's roadmapEnabled"
-            },
-            {
-              "name": "samlEnabled",
-              "type": "Boolean",
-              "description": "The Organization's samlEnabled"
-            },
-            {
-              "name": "scimEnabled",
-              "type": "Boolean",
-              "description": "The Organization's scimEnabled"
-            },
-            {
-              "name": "urlKey",
-              "type": "String",
-              "description": "The Organization's urlKey"
-            },
-            {
-              "name": "userCount",
-              "type": "Int",
-              "description": "The Organization's userCount"
-            }
-          ],
-          "events": [],
-          "description": "A Organization",
-          "actions": []
-        },
-        {
           "name": "OrganizationInvite",
           "fields": [
             {
@@ -2990,62 +2366,6 @@
           "actions": []
         },
         {
-          "name": "Template",
-          "fields": [
-            {
-              "name": "description",
-              "type": "String",
-              "description": "The Template's description"
-            },
-            {
-              "name": "name",
-              "type": "String",
-              "description": "The Template's name"
-            },
-            {
-              "name": "sortOrder",
-              "type": "Float",
-              "description": "The Template's sortOrder"
-            },
-            {
-              "name": "type",
-              "type": "String",
-              "description": "The Template's type"
-            }
-          ],
-          "events": [],
-          "description": "A Template",
-          "actions": []
-        },
-        {
-          "name": "Template",
-          "fields": [
-            {
-              "name": "description",
-              "type": "String",
-              "description": "The Template's description"
-            },
-            {
-              "name": "name",
-              "type": "String",
-              "description": "The Template's name"
-            },
-            {
-              "name": "sortOrder",
-              "type": "Float",
-              "description": "The Template's sortOrder"
-            },
-            {
-              "name": "type",
-              "type": "String",
-              "description": "The Template's type"
-            }
-          ],
-          "events": [],
-          "description": "A Template",
-          "actions": []
-        },
-        {
           "name": "TimeSchedule",
           "fields": [
             {
@@ -3073,157 +2393,6 @@
           "fields": [],
           "events": [],
           "description": "A TriageResponsibility",
-          "actions": []
-        },
-        {
-          "name": "User",
-          "fields": [
-            {
-              "name": "active",
-              "type": "Boolean",
-              "description": "The User's active"
-            },
-            {
-              "name": "admin",
-              "type": "Boolean",
-              "description": "The User's admin"
-            },
-            {
-              "name": "avatarBackgroundColor",
-              "type": "String",
-              "description": "The User's avatarBackgroundColor"
-            },
-            {
-              "name": "avatarUrl",
-              "type": "String",
-              "description": "The User's avatarUrl"
-            },
-            {
-              "name": "calendarHash",
-              "type": "String",
-              "description": "The User's calendarHash"
-            },
-            {
-              "name": "createdIssueCount",
-              "type": "Int",
-              "description": "The User's createdIssueCount"
-            },
-            {
-              "name": "description",
-              "type": "String",
-              "description": "The User's description"
-            },
-            {
-              "name": "disableReason",
-              "type": "String",
-              "description": "The User's disableReason"
-            },
-            {
-              "name": "displayName",
-              "type": "String",
-              "description": "The User's displayName"
-            },
-            {
-              "name": "email",
-              "type": "String",
-              "description": "The User's email"
-            },
-            {
-              "name": "guest",
-              "type": "Boolean",
-              "description": "The User's guest"
-            },
-            {
-              "name": "initials",
-              "type": "String",
-              "description": "The User's initials"
-            },
-            {
-              "name": "inviteHash",
-              "type": "String",
-              "description": "The User's inviteHash"
-            },
-            {
-              "name": "isMe",
-              "type": "Boolean",
-              "description": "The User's isMe"
-            },
-            {
-              "name": "name",
-              "type": "String",
-              "description": "The User's name"
-            },
-            {
-              "name": "statusEmoji",
-              "type": "String",
-              "description": "The User's statusEmoji"
-            },
-            {
-              "name": "statusLabel",
-              "type": "String",
-              "description": "The User's statusLabel"
-            },
-            {
-              "name": "timezone",
-              "type": "String",
-              "description": "The User's timezone"
-            },
-            {
-              "name": "url",
-              "type": "String",
-              "description": "The User's url"
-            }
-          ],
-          "events": [],
-          "description": "A User",
-          "actions": []
-        },
-        {
-          "name": "UserSettings",
-          "fields": [
-            {
-              "name": "calendarHash",
-              "type": "String",
-              "description": "The UserSettings's calendarHash"
-            },
-            {
-              "name": "showFullUserNames",
-              "type": "Boolean",
-              "description": "The UserSettings's showFullUserNames"
-            },
-            {
-              "name": "subscribedToChangelog",
-              "type": "Boolean",
-              "description": "The UserSettings's subscribedToChangelog"
-            },
-            {
-              "name": "subscribedToDPA",
-              "type": "Boolean",
-              "description": "The UserSettings's subscribedToDPA"
-            },
-            {
-              "name": "subscribedToInviteAccepted",
-              "type": "Boolean",
-              "description": "The UserSettings's subscribedToInviteAccepted"
-            },
-            {
-              "name": "subscribedToPrivacyLegalUpdates",
-              "type": "Boolean",
-              "description": "The UserSettings's subscribedToPrivacyLegalUpdates"
-            },
-            {
-              "name": "subscribedToUnreadNotificationsReminder",
-              "type": "Boolean",
-              "description": "The UserSettings's subscribedToUnreadNotificationsReminder"
-            },
-            {
-              "name": "unsubscribedFrom",
-              "type": "String",
-              "description": "The UserSettings's unsubscribedFrom"
-            }
-          ],
-          "events": [],
-          "description": "A UserSettings",
           "actions": []
         },
         {
@@ -3400,7 +2569,6 @@
           "description": "A WorkflowState",
           "actions": []
         }
-      ]
-    }
+    ]
   }
-  
+}
