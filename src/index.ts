@@ -48,11 +48,6 @@ const nodeTypeScalarFields = Object.fromEntries(
   })
 );
 
-console.log(
-  "Node types with their scalar fields:",
-  JSON.stringify(nodeTypeScalarFields, null, 2)
-);
-
 // Add the following code to find Query fields returning Node types
 const queryType = schema.getQueryType();
 
@@ -76,24 +71,92 @@ if (queryType) {
     });
   // as Array<[string, string, string[]]>;
 
-  console.log("Query fields returning Node types with parameters:");
+  // console.log("Query fields returning Node types with parameters:");
+  // nodeQueries.forEach(([fieldName, returnType, args]) => {
+  //   console.log(`${fieldName}(${args}): ${returnType}`);
+  //   console.log(args);
+  // });
+
+  const collectionSchemas: Array<string> = [];
+  const collectionTypes: Array<string> = [];
+
   nodeQueries.forEach(([fieldName, returnType, args]) => {
-    console.log(`${fieldName}(${args}): ${returnType}`);
-    console.log(args);
-  });
-  nodeQueries.map(([fieldName, returnType, args]) => {
-    console.log(
+    collectionSchemas.push(
       generateCollectionSchema([fieldName, returnType, args.join(",")])
     );
-    console.log(
+    collectionTypes.push(
       generateCollectionType([fieldName, returnType, args.join(",")])
     );
   });
+
+  console.log(collectionSchemas);
+
+  const rootSchema = generateRootSchema(nodeQueries);
+  console.log("Generated Root Schema:");
+  console.log(rootSchema);
+  const rootType = generateRootType(
+    nodeQueries.map(([fieldName, returnType]) => returnType.toLowerCase())
+  );
+  console.log("Generated Root Type:");
+  console.log(rootType);
+  // console.log(collectionTypes);
+  // Create the output directory if it doesn't exist
+  // const outputDir = path.join(__dirname, "output");
+  // if (!fs.existsSync(outputDir)) {
+  //   fs.mkdirSync(outputDir);
+  // }
+
+  // // Write collectionSchemas to a file
+  // const schemasContent = JSON.stringify(collectionSchemas.join("\n"), null, 2);
+  // fs.writeFileSync(
+  //   path.join(outputDir, "collectionSchemas.json"),
+  //   schemasContent
+  // );
+
+  // // Write collectionTypes to a file
+  // const typesContent = collectionTypes.join("\n");
+  // fs.writeFileSync(path.join(outputDir, "collectionTypes.ts"), typesContent);
+
+  // console.log("Files have been written to the /output folder.");
 }
 
-function generateRoot(type: string) {}
+function generateRootType(types: Array<string>) {
+  return `export const Root = {
+  ${types.map((type) => `${type}: () => ({})`).join(",\n  ")}
+};`;
+}
 
-function generateBaseTypes(type: string): string {
+function generateRootSchema(
+  nodeQueries: Array<[string, string, string[]]>
+): string {
+  const fields = nodeQueries.map(([fieldName, returnType]) => {
+    return {
+      name: returnType.toLowerCase(),
+      type: `${returnType}Collection`,
+      description: `Collection of ${returnType}s`,
+    };
+  });
+
+  const rootSchema = {
+    name: "Root",
+    description: "Driver for the API",
+    fields: [...fields],
+  };
+
+  return JSON.stringify(rootSchema, null, 2);
+}
+
+// function generateBaseType(type: string): string {
+//   return `
+//   const ${type} = {
+
+//     page(): ${type}[] {
+
+//   };
+//   `;
+// }
+
+function generateBaseSchema(type: string): string {
   return `
   const ${type} = {
   
@@ -136,16 +199,15 @@ function generateCollectionSchema(arr: Array<string>): string {
 }
 
 function generateCollectionType(arr: Array<string>) {
-  console.log(arr);
   // console.log(nodeTypeScalarFields);
 
   return `
-  const ${arr[1]}Collection = {
+  export const ${arr[1]}Collection = {
 
     async one(args, { info }) {
       const query =\`
       query {
-        ${arr[0]}(args) {
+        ${arr[0]}(args.id) {
           ${nodeTypeScalarFields[arr[1]]
             .map((field) => Object.keys(field)[0])
             .join("\n          ")}
