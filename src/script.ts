@@ -34,9 +34,9 @@ const nodeTypeScalarFields = Object.fromEntries(
         return (
           fieldType === "String" ||
           fieldType === "Float" ||
-          fieldType === "DateTime" ||
+          // fieldType === "DateTime" ||
           fieldType === "Boolean" ||
-          fieldType === "JSONObject" ||
+          // fieldType === "JSONObject" ||
           fieldType === "Int"
         );
       })
@@ -79,7 +79,7 @@ if (queryType) {
 
   const collectionSchemas: Array<string> = [];
   const collectionTypes: Array<string> = [];
-
+  const baseSchemas: Array<string> = [];
   nodeQueries.forEach(([fieldName, returnType, args]) => {
     collectionSchemas.push(
       generateCollectionSchema([fieldName, returnType, args.join(",")])
@@ -87,18 +87,49 @@ if (queryType) {
     collectionTypes.push(
       generateCollectionType([fieldName, returnType, args.join(",")])
     );
+    baseSchemas.push(
+      generateBaseSchema([fieldName, returnType, args.join(",")])
+    );
   });
-
-  console.log(collectionSchemas);
-
   const rootSchema = generateRootSchema(nodeQueries);
-  console.log("Generated Root Schema:");
-  console.log(rootSchema);
   const rootType = generateRootType(
     nodeQueries.map(([fieldName, returnType]) => returnType.toLowerCase())
   );
-  console.log("Generated Root Type:");
-  console.log(rootType);
+
+  // console.log("Generated Root Type:");
+  // console.log(rootType);
+
+  // console.log("collectionTypes", collectionTypes);
+  function appendToEachLine(multilineString: string, prefix: string): string {
+    return multilineString
+      .split("\n")
+      .map((line) => prefix + line)
+      .join("\n");
+  }
+
+  //   // Example usage:
+  //   const exampleString = `Line 1
+  // Line 2
+  // Line 3`;
+  //   const prefixedString = appendToEachLine(exampleString, "> ");
+  //   console.log(prefixedString);
+  const memconfig = `
+    {
+      "schema": {
+      "types": [
+        ${appendToEachLine(collectionSchemas.join(",\n"), "        ")},
+        ${appendToEachLine(rootSchema, "        ")},
+        ${appendToEachLine(baseSchemas.join(",\n"), "        ")}
+      ]
+    }
+  }
+  `;
+  console.log("schemas", memconfig);
+  const types = rootType + "\n" + collectionTypes.join("\n");
+  console.log(types);
+
+  // console.log("Generated Root Schema:");
+
   // console.log(collectionTypes);
   // Create the output directory if it doesn't exist
   // const outputDir = path.join(__dirname, "output");
@@ -156,14 +187,49 @@ function generateRootSchema(
 //   `;
 // }
 
-function generateBaseSchema(type: string): string {
-  return `
-  const ${type} = {
-  
-    page(): ${type}[] {
-  
+function generateBaseSchema(arr: Array<string>): string {
+  const [fieldName, returnType, args] = arr;
+  const fields = nodeTypeScalarFields[returnType].map((field) => {
+    const fieldName = Object.keys(field)[0];
+    const fieldType = field[fieldName];
+    return {
+      name: fieldName,
+      type: fieldType,
+      description: `The ${returnType}'s ${fieldName}`,
+    };
+  });
+
+  const schema = {
+    name: returnType,
+    fields: [
+      ...fields,
+      {
+        name: "one",
+        type: returnType,
+        params:
+          args.length > 0
+            ? [
+                {
+                  name: args.split(":")[0],
+                  type: args.split(":")[1].trim().replace("!", ""),
+                },
+              ]
+            : [],
+        description: `Field representing a single ${returnType}`,
+      },
+      {
+        name: "page",
+        type: `${returnType}Page`,
+        params: [],
+        description: `Field representing a page of ${returnType}s`,
+      },
+    ],
+    events: [],
+    description: `Collection of ${returnType}`,
+    actions: [],
   };
-  `;
+
+  return JSON.stringify(schema, null, 2);
 }
 
 function generateCollectionSchema(arr: Array<string>): string {
@@ -179,7 +245,7 @@ function generateCollectionSchema(arr: Array<string>): string {
             arr[2].length > 0
               ? `{
             "name": "${arr[2].split(":")[0]}",
-            "type": "${arr[2].split(":")[1].trim()}"
+            "type": "${arr[2].split(":")[1].trim().replace("!", "")}"
           }`
               : ""
           }
@@ -194,20 +260,20 @@ function generateCollectionSchema(arr: Array<string>): string {
       }
     ],
     "events": [],
-    "description": "Collection of ${arr[1]}s"
+    "description": "Collection of ${arr[1]}"
   }`;
 }
 
 function generateCollectionType(arr: Array<string>) {
   // console.log(nodeTypeScalarFields);
-
+  console.log("collectionarr", arr);
   return `
   export const ${arr[1]}Collection = {
 
     async one(args, { info }) {
       const query =\`
       query {
-        ${arr[0]}(args.id) {
+        ${arr[0]}(${arr[2].length > 0 ? `id: args.id` : ""}) {
           ${nodeTypeScalarFields[arr[1]]
             .map((field) => Object.keys(field)[0])
             .join("\n          ")}
