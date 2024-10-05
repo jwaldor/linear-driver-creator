@@ -5,6 +5,10 @@ import {
   getIdQueryFields,
   getNodeTypes,
   getNodeTypeScalarFields,
+  getAllRelatedTypes,
+  buildNodeTypeGraphs,
+  getCreateMutations,
+  getInputTypes,
 } from "./helpers";
 
 // Load the GraphQL schema from the file
@@ -12,15 +16,23 @@ const schemaPath = path.join(__dirname, "schema.graphql");
 const typeDefs = fs.readFileSync(schemaPath, "utf-8");
 
 console.log("Hello World");
-console.log("GraphQL Schema Loaded:", typeDefs);
+// console.log("GraphQL Schema Loaded:", typeDefs);
 
 const schema = buildSchema(typeDefs);
-console.log("Schema Built:", schema);
+// console.log("Schema Built:", schema);
+
+const inputTypes = getInputTypes(schema);
+// console.log("Input Types:", inputTypes);
 
 // Add the following code to get types implementing Node
 const nodeTypes = getNodeTypes(schema);
-
 console.log("Types implementing Node:", nodeTypes);
+
+const relatedTypes = getAllRelatedTypes(schema);
+console.log("Related Types:", relatedTypes);
+
+// const nodeTypeGraphs = buildNodeTypeGraphs(schema);
+// console.log("NodeType Graphs:", nodeTypeGraphs);
 
 // Add the following code to associate Node types with their scalar fields
 const nodeTypeScalarFields = getNodeTypeScalarFields(nodeTypes, schema);
@@ -36,6 +48,22 @@ if (!idQueryFields) {
   console.error("No ID query fields found");
   process.exit(1);
 }
+
+const crudMutations = getCreateMutations(
+  schema,
+  idQueryFields.map((arr) => arr[0]),
+  inputTypes
+);
+console.log(
+  "CRUD Mutations:",
+  crudMutations.map((arr: any) => {
+    console.log("name", arr.name);
+    console.log("returnType", arr.returnType);
+    console.log("args", arr.args);
+
+    // return arr.name + ", " + arr.returnType + ", " + arr.args;
+  })
+);
 
 const collectionSchemas: Array<string> = [];
 const collectionTypes: Array<string> = [];
@@ -85,7 +113,8 @@ const memconfig = `
   }
 }
 `;
-console.log("schemas", schema);
+console.log(memconfig);
+
 const index =
   `import { nodes, state } from "membrane";
   
@@ -110,12 +139,34 @@ const index =
 
   return await response.json();
 }
+
+async function makeLinearMutation(input: string): Promise<any> {
+  const apiKey = state.api_key;
+  if (!apiKey) {
+    throw new Error('api_key is not set');
+  }
+
+  const response = await fetch('https://api.linear.app/graphql', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': apiKey,
+    },
+    body: JSON.stringify({mutation:input.replace(/\\n/g, "")}),,
+  });
+
+  if (!response.ok) {
+    throw new Error(\`HTTP error! status: \${response.status}\`);
+  }
+
+  return await response.json();
+}
     
 ` +
   rootType +
   "\n" +
   collectionTypes.join("\n");
-console.log(index);
+// console.log(index);
 
 // Create the output directory if it doesn't exist
 const outputDir = path.join(__dirname, "output");
@@ -129,6 +180,8 @@ if (!fs.existsSync(outputDir)) {
 // fs.writeFileSync(path.join(outputDir, "index.ts"), index);
 
 // console.log("Files have been written to the /output folder.");
+
+const typeMap = schema.getTypeMap();
 
 function generateRootType(types: Array<string>) {
   return `export const Root = {
@@ -196,6 +249,12 @@ function generateBaseSchema(arr: Array<string>): string {
 }
 
 function generateCollectionSchema(arr: Array<string>): string {
+  const createMutation = crudMutations
+    .filter((mut) => mut !== undefined)
+    .find(
+      (mut) =>
+        mut.name.replace("Create", "").toLowerCase() === arr[1].toLowerCase()
+    );
   return `
   {
     "name": "${arr[1]}Collection",
@@ -217,20 +276,44 @@ function generateCollectionSchema(arr: Array<string>): string {
       }
     ],
     "events": [],
+    "actions": [
+      {
+        "name": "create",
+        "type": "Void",
+        "description": "Create a new ${arr[1]}",
+        "params": [
+            ${
+              createMutation
+                ? createMutation.args
+                    .map((arg) => JSON.stringify(arg))
+                    .join(",\n              ")
+                : ""
+            }
+        ]
+        
+      }
+    ],
     "description": "Collection of ${arr[1]}"
   }`;
 }
 
 function generateCollectionType(arr: Array<string>) {
   // console.log(nodeTypeScalarFields);
+  const createMutation = crudMutations
+    .filter((mut) => mut !== undefined)
+    .find(
+      (mut) =>
+        mut.name.replace("Create", "").toLowerCase() === arr[1].toLowerCase()
+    );
   console.log("collectionarr", arr);
+  console.log("createMutation", createMutation);
   return `
   export const ${arr[1]}Collection = {
 
     async one(args, { info }) {
       const query =\`
       {
-        ${arr[0]}(${arr[2].length > 0 ? `id: args.id` : ""}) {
+        ${arr[0]}(${arr[2].length > 0 ? `id: \\"\${args.id}\\"` : ""}) {
           ${nodeTypeScalarFields[arr[1]]
             .map((field) => Object.keys(field)[0])
             .join("\n          ")}
@@ -244,6 +327,22 @@ function generateCollectionType(arr: Array<string>) {
           return data[firstKey];
         }
       }
+    }
+    ${
+      createMutation
+        ? `
+    async create(args, { info }) {
+      const mutation = \`${createMutation.name}(
+      input: 
+          {${createMutation.args
+            .map((arg) => `${arg.name}: \${JSON.stringify(args.${arg.name})}`)
+            .join("\n           ")} {
+    }})\`;
+    }
+      const result = await makeLinearMutation(mutation);
+
+    `
+        : ""
     }
   };
   `;
